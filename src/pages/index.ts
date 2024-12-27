@@ -1,0 +1,6 @@
+export { default as Login } from './login'
+export { default as Register } from './register'
+export { default as ForgotPassword } from './forgot-password'
+export { default as Home } from './home'
+export { default as AdminDashboard } from './admin/dashboard'
+export { default as RegisterPremium } from './customer/register-premium'

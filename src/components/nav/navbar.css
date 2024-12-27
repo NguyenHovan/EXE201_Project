@@ -1,0 +1,90 @@
+Base styling for the navbar
+.flex {
+    display: flex;
+}
+
+/* Center items vertically and horizontally */
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+/* Padding for the navbar */
+.p-3 {
+    padding: 1rem; /* Adjust based on your preference */
+}
+
+/* Background color for the navbar */
+.bg-gray-300 {
+    background-color: #d1d5db; /* Light gray background */
+}
+
+/* Cursor pointer for interactive icons */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Logo user icon styling */
+.logo-user {
+    /* width: 40px !important; 
+    height: 40px !important;  */
+    font-size: 24px; /* Adjust size as needed */
+    color: #000; /* Change color if necessary */
+    transition: color 0.3s; /* Smooth color change */
+}
+
+/* User icon hover effect */
+.logo-user:hover {
+    color: #4a4a4a; /* Darker gray on hover */
+}
+
+/* Shopping cart icon styling */
+.shopping-cart {
+    font-size: 24px; /* Adjust size as needed */
+    color: #000; /* Change color if necessary */
+    transition: color 0.3s; /* Smooth color change */
+}
+
+/* Shopping cart hover effect */
+.shopping-cart:hover {
+    color: #4a4a4a; /* Darker gray on hover */
+}
+
+/* Hover effects for links */
+.navbar-link {
+    color: black !important;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+    color: #1890ff !important; /* Change link color on hover (Ant Design blue) */
+    text-decoration: underline;
+  }
+  
+  /* Hover effects for icons */
+  .navbar-icon {
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-icon:hover {
+    color: #1890ff; /* Change icon color on hover */
+  }
+  
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .p-3 {
+        padding: 0.5rem; /* Smaller padding for mobile */
+    }
+    
+    .logo-user, .shopping-cart {
+        font-size: 20px; /* Smaller icons on mobile */
+    }
+}
+

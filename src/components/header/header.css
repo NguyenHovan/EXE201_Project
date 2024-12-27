@@ -1,0 +1,9 @@
+.header-slider {
+    overflow: hidden; /* Hide the extra content */
+  }
+  
+  .slide {
+    display: flex; /* Display items in a row */
+    width: 300%; /* 100% for each of the 3 slides */
+  }
+  

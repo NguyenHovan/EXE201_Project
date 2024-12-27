@@ -1,0 +1,43 @@
+/* styles.css */
+.input-container {
+    margin-bottom: 16px; /* Adds space below the input */
+  }
+  
+  .input-email {
+    width: 100%; /* Make the input full-width */
+    padding: 10px; /* Padding for a better touch target */
+    border: 1px solid #d9d9d9; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+    transition: border-color 0.3s; /* Smooth transition for focus */
+  }
+  
+  .input-email:focus {
+    border-color: #40a9ff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    width: 100%;
+  }
+  
+  .submit-button {
+    width: 100%; /* Make the button full-width */
+    padding: 10px; /* Padding for a better touch target */
+    background-color: red; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+  }
+  
+  .submit-button:hover {
+    background-color: #fed103 !important; /* Lighter shade on hover */
+    color: #00416c !important; /* Text color */
+  }
+  
+  .submit-button:focus {
+    outline: none; /* Remove default outline on focus */
+  }
+
+  
+  
