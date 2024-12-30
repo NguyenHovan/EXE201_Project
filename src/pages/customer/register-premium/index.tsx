@@ -1,5 +1,4 @@
 import Title from 'antd/es/typography/Title'
-import React from 'react'
 import { PremiumButton, PremiumIcon, PremiumOptionCard } from '../../../components'
 import { Col, Row } from 'antd'
 

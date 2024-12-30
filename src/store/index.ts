@@ -1,5 +1,3 @@
-// import hvn
-
 import { configureStore } from '@reduxjs/toolkit';
 import loadingReducer from './loadingSlice';  
 

@@ -35,9 +35,11 @@ export const PATH = {
     PURCHASE: "/purchase",
     //Customer
     CUSTOMER: '/customer/*',
-    CUSTOMER_PROFILE: "/profile",
-    CUSTOMER_CHANGE_PASSWORD: "/change-password",
-    CUSTOMER_REGISTER_PREMIUM: "/premium",
+    CUSTOMER_PROFILE: "profile",
+    CUSTOMER_CHANGE_PASSWORD: "change-password",
+    CUSTOMER_REGISTER_PREMIUM: "premium",
+    CUSTOMER_ORDER: "order",
+    CUSTOMER_PAYMENT_METHOD: "payment-method",
     //Staff
     STAFF: '/staff/*',
     STAFF_LOGIN: '/manager/login',
