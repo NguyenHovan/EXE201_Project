@@ -26,11 +26,19 @@ const Navbar = () => {
       </Col>
       <Col span={4}>
         <Row>
-          <Col span={12}>Sign up</Col>
-          <Col span={12}>Log in</Col>
+          <Col span={12}>
+          <Link to={"/register"}>
+          Sign up
+          </Link>
+          </Col>
+          <Col span={12}>
+          <Link to={"/login"}>
+          Log in
+          </Link>
+          </Col>
         </Row>
       </Col>
-    </Row>
+    </Row> 
   )
 };
 

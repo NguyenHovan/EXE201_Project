@@ -1,0 +1,6 @@
+/* Nếu bạn đang sử dụng CSS */
+.dropdown-center .ant-dropdown-menu {
+    transform: translateX(-50%) !important;
+    left: 50% !important;
+    right: auto !important;
+}

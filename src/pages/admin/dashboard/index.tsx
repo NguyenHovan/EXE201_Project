@@ -11,7 +11,7 @@ const handleChange = (value: string) => {
 };
 const AdminDashboard = () => {
     return (
-        <div className='container mx-auto mt-10'>
+        <div className='container pl-20 mx-auto mt-10'>
             <Title level={1}>Dashboard</Title>
             <Row>
                 <Col span={8}>

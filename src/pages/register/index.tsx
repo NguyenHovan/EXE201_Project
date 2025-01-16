@@ -85,7 +85,7 @@ const RegisterPage = () => {
                                     <span>Continue with Google</span>
                                 </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Sign in here</a>
+                                          Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Sign in here</a>
                                 </p>
                             </form>
                         </div>
