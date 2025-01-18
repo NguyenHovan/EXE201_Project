@@ -1,0 +1,3 @@
+interface PostJobPersonal{
+    name:string;
+}

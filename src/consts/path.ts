@@ -5,8 +5,12 @@ export const PATH = {
     LOGIN: "/login",
     REGISTER: "/register",
     JOB: "/job",
+    JOB_INFO: "/job-info",
+    APPLY: "/apply",
+    APPLY_SUCCESS: "/apply-success",
     FORGOT_PASSWORD: "forgot-password",
     INTERNAL_SERVER_ERROR: "internal-server-error",
+    POST_JOB: "/post-job",
     //Customer
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "profile",
