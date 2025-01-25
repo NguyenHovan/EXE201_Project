@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AdminDashboard, AdminLogin, AdminManageUser, ApplyPage, ApplySuccess, CustomerOrder, ForgotPassword, Home, InternalServer, JobInfo, JobPage, Login, NotFound, PaymentMethod, PostJob, Register, RegisterPremium } from "../pages"
+import { AdminDashboard, AdminLogin, AdminManageUser, ApplyPage, ApplySuccess, CustomerOrder, ForgotPassword, Home, InternalServer, JobInfo, JobPage, Login, NotFound, PaymentMethod, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 
 const AppRouter = () => {
@@ -19,6 +19,8 @@ const AppRouter = () => {
             <Route path={PATH.APPLY} element={<ApplyPage />} />
             <Route path={PATH.APPLY_SUCCESS} element={<ApplySuccess />} />
             <Route path={PATH.POST_JOB} element={<PostJob />} />
+            <Route path={PATH.POST} element={<PostPage />} />
+            <Route path={PATH.VIEW_POST} element={<ViewPost />} />
             {/* Admin */}
             {/* <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} /> */}
             <Route path={PATH.CUSTOMER}>

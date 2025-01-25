@@ -1,6 +1,5 @@
 export const PATH = {
-    /* GUEST PATHS */
-   
+    /* GUEST PATHS */ 
     HOME: "/",
     LOGIN: "/login",
     REGISTER: "/register",
@@ -11,6 +10,8 @@ export const PATH = {
     FORGOT_PASSWORD: "forgot-password",
     INTERNAL_SERVER_ERROR: "internal-server-error",
     POST_JOB: "/post-job",
+    POST: "/post",
+    VIEW_POST: "/view-post",
     //Customer
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "profile",
