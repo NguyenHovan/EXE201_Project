@@ -5,6 +5,7 @@ import { loginService } from '../../services';
 import { MESSAGE } from '../../consts';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { IMG } from '../../consts/variable';
 
 const LoginPage = () => {
     const [form] = Form.useForm();
@@ -41,12 +42,12 @@ const LoginPage = () => {
         <div>
             <section className="bg-gray-50">
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                    <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                        <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
-                        Flowbite
-                    </a>
+                    <div  className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+                        <img className=" mr-2" src={IMG.SHOCA_IMG} alt="logo" />
+                
+                    </div>
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:border-gray-700">
-                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8 text-black">
                             <Form
                                 form={form}
                                 layout="vertical"
@@ -61,7 +62,7 @@ const LoginPage = () => {
                                     name="email"
                                     rules={[{ required: true, message: 'Please input your username!' }]}
                                 >
-                                    <Input type="email" placeholder="name@company.com" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                    <Input type="email" placeholder="name@company.com" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" />
                                 </Form.Item>
 
                                 <Form.Item<FieldType>
@@ -69,7 +70,7 @@ const LoginPage = () => {
                                     name="password"
                                     rules={[{ required: true, message: 'Please input your password!' }]}
                                 >
-                                    <Input type='password' placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                    <Input type='password' placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " />
                                 </Form.Item>
 
                                 <Form.Item name="remember" valuePropName="checked">

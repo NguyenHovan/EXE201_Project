@@ -2,7 +2,7 @@ import { useState } from "react";
 import { PostJobCompany, PostJobPersonal } from "../../components";
 import { FormProps } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Select, Space } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import TextArea from "antd/es/input/TextArea";
 
 

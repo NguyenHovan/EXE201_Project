@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
         const currentPath = window.location.pathname;
         if (currentPath.startsWith('/admin')) {
             setItems([
-                getItem('Dashboard', '/admin/dashboard', <DesktopOutlined />),
+                getItem('Dashboard', '/admin/', <DesktopOutlined />),
                 getItem('Manage Accounts', '/admin/manage-accounts', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/clinic-owner')) {

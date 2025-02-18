@@ -19,10 +19,11 @@ export const PATH = {
     CUSTOMER_REGISTER_PREMIUM: "premium",
     CUSTOMER_ORDER: "order",
     CUSTOMER_PAYMENT_METHOD: "payment-method",
+    CUSTOMER_ATWORK_DETAIL: "/atworks/:id",
     
     //admin
     ADMIN: '/admin/*',
-    ADMIN_DASHBOARD: 'dashboard',
+    ADMIN_DASHBOARD: '',
     ADMIN_MANAGE_USER: 'manage-accounts',
     ADMIN_LOGIN: 'login',
     ADMIN_HOME: "/",

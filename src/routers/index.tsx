@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
 import { AdminDashboard, AdminLogin, AdminManageUser, ApplyPage, ApplySuccess, CustomerOrder, ForgotPassword, Home, InternalServer, JobInfo, JobPage, Login, NotFound, PaymentMethod, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
 import { Dashboard } from "../components";
+import AtWorkDetail from "../pages/atwork-detail";
 
 const AppRouter = () => {
     // const { canAccess } = useRedirect();
@@ -21,6 +22,7 @@ const AppRouter = () => {
             <Route path={PATH.POST_JOB} element={<PostJob />} />
             <Route path={PATH.POST} element={<PostPage />} />
             <Route path={PATH.VIEW_POST} element={<ViewPost />} />
+            <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<AtWorkDetail />} />
             {/* Admin */}
             {/* <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} /> */}
             <Route path={PATH.CUSTOMER}>
