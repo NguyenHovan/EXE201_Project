@@ -44,14 +44,16 @@ const Dashboard: React.FC = () => {
             setItems([
                 getItem('Dashboard', '/admin/', <DesktopOutlined />),
                 getItem('Manage Accounts', '/admin/manage-accounts', <UserOutlined />),
+                getItem('Manage Recruiters', '/admin/manage-recruiters', <UserOutlined />),
+                getItem('Manage Jobs', '/admin/manage-jobs', <UserOutlined />),
+                getItem('Manage Portfolios', '/admin/manage-portfolios', <UserOutlined />),
+                getItem('Manage Art Works', '/admin/manage-artworks', <UserOutlined />),
+                getItem('Manage Freelancer Serivces', '/admin/manage-services', <UserOutlined />),
             ]);
-        }else if(currentPath.startsWith('/clinic-owner')) {
+        }else if(currentPath.startsWith('/staff')) {
             setItems([
-                getItem('Quản lý phòng khám', '/clinic-owner/register-clinic', <DesktopOutlined />),
-                getItem('Quản lý bác sĩ', '/clinic-owner/manage-doctor', <UserOutlined />),
-                getItem('Quản lý bệnh nhân', '/clinic-owner/manage-patient', <UserOutlined />),
-                getItem('Quản lý lịch khám bệnh', '/clinic-owner/manage-medical-examination-schedule', <UserOutlined />),
-                getItem('Quản lý lịch hẹn', '/clinic-owner/manage-appointment-schedule', <CalendarOutlined />),
+                getItem('Dashboard', '/staff/', <DesktopOutlined />),
+                getItem('Manage Packages', '/staff/manage-packages', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/doctor')) {
             setItems([

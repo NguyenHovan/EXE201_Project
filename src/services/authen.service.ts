@@ -25,6 +25,6 @@ export const registerService = async (values: FormDataRegister) => {
         }
     } catch (error) {
         console.log("registerService-error: ", error)
-        return error;
+        // return error;
     }
 }

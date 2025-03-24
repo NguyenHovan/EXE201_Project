@@ -1,7 +1,7 @@
 import { User } from "../models";
 
 export const priceUnit = (price: number) => {
-    return price.toLocaleString('vi-VN')+"VND"
+    return price.toLocaleString('vi-VN')+" VND"
 }
 
 

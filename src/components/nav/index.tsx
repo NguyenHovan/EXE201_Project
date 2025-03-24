@@ -21,6 +21,38 @@ const Navbar = () => {
         </div>
       ),
     },
+    {
+      key: '2',
+      label: (
+        <Link to={"/customer/manage-services"} >
+          Freelancer
+        </Link>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <Link to={"/customer/manage-portfolios"} >
+          Portfolio
+        </Link>
+      ),
+    },
+    {
+      key: '4',
+      label: (
+        <Link to={"/customer/manage-artworks"} >
+          Atwork
+        </Link>
+      ),
+    },
+    {
+      key: '5',
+      label: (
+        <Link to={"/customer/manage-jobs"} >
+          Job
+        </Link>
+      ),
+    },
   ];
 
   const logout = () => {
@@ -42,9 +74,9 @@ const Navbar = () => {
       <Col span={8}>
         <Row>
           <Col span={6}>Explore</Col>
-          <Col span={6}>Jobs</Col>
+          <Col span={6}><a href="/job">Jobs</a></Col>
           <Col span={6}>Hire</Col>
-          <Col span={6}>Assets</Col>
+          <Col span={6}><a href="/hire-freelancers">Hire Freelancers</a></Col>
         </Row>
       </Col>
       <Col span={8}>

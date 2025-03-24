@@ -1,6 +1,6 @@
-const config = {
+const secret = {
     BASE_URL: import.meta.env.VITE_BASE_URL,
   };
   
-  export default config;
+  export default secret;
   

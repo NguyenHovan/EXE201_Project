@@ -11,7 +11,10 @@ export const PATH = {
     INTERNAL_SERVER_ERROR: "internal-server-error",
     POST_JOB: "/post-job",
     POST: "/post",
+    HIRE_FREELANCER: "/hire-freelancers",
     VIEW_POST: "/view-post",
+    JOB_DETAIL: "/job/:id",
+    HIRE_FREELANCER_DETAIL: "/hire-freelancer/:id",
     //Customer
     CUSTOMER: '/customer/*',
     CUSTOMER_PROFILE: "profile",
@@ -20,16 +23,29 @@ export const PATH = {
     CUSTOMER_ORDER: "order",
     CUSTOMER_PAYMENT_METHOD: "payment-method",
     CUSTOMER_ATWORK_DETAIL: "/atworks/:id",
-    
+    CUSTOMER_ADD_NEW_SERVICE: "new-service",
+    CUSTOMER_EDIT_SERVICE: "edit-service/:id",
+    CUSTOMER_MANAGE_SERVICES: "manage-services",
+    CUSTOMER_MANAGE_PORTFOLIO: "manage-portfolios",
+    CUSTOMER_MANAGE_ARTWORKS: "manage-artworks",
+    CUSTOMER_MANAGE_JOBS: "manage-jobs",
+    CUSTOMER_PORTFOLIO_DETAIL: "portfolios/:id",
     //admin
     ADMIN: '/admin/*',
     ADMIN_DASHBOARD: '',
     ADMIN_MANAGE_USER: 'manage-accounts',
+    ADMIN_MANAGE_JOBS: 'manage-jobs',
+    ADMIN_MANAGE_PORTFOLIOS: 'manage-portfolios',
+    ADMIN_MANAGE_ARTWORKS: 'manage-artworks',
+    ADMIN_MANAGE_SERVICES: 'manage-services',
     ADMIN_LOGIN: 'login',
     ADMIN_HOME: "/",
-
+    ADMIN_MANAGE_RECRUITER: "manage-recruiters",
     //Manager
     MANAGER_LOGIN: 'login',
     //Staff
     STAFF_LOGIN: 'login',
+    STAFF: '/staff/*',
+    STAFF_DASHBOARD: '',
+    STAFF_MANAGE_PACKAGES: "manage-packages",
   };

@@ -2,7 +2,7 @@ interface Account {
     firstName: string;
     lastName: string;
     gender: number;
-    dateOfBirth: date;
+    dateOfBirth: string;
     address: string;
     avatarUrl: string | null;
     email: string;
@@ -10,7 +10,7 @@ interface Account {
     emailConfirmed: boolean;
     personalWebsiteUrl: string | null;
     portfolioUrl: string | null;
-    role: string;
+    role: number;
     id: string;
     creationDate: string;
     createdBy: string | null;

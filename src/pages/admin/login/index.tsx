@@ -21,7 +21,7 @@ const AdminLoginPage = () => {
            if(response && response.data.accessToken){
                const decodedToken = jwtDecode(response.data.accessToken);
                console.log("decodedToken: ",decodedToken)
-               navigate('/admin/manager-users')
+               navigate('/admin')
                localStorage.setItem("token", response.data.accessToken)
                localStorage.setItem("user", JSON.stringify(decodedToken))
                message.success(MESSAGE.LOGIN_SUCCESSFULLY)  
@@ -31,7 +31,7 @@ const AdminLoginPage = () => {
          }
            console.log('Success:', values);
        };
-   
+
 
     const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
         console.log('Failed:', errorInfo);

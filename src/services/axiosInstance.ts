@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../secret";
+import { message } from "antd";
 
 export const axiosInstance = axios.create({
     baseURL: config.BASE_URL,
@@ -34,6 +35,7 @@ axiosInstance.interceptors.request.use(
     },
     (error) => {
       console.log("axiosInstance: ", error.response.data)
+      message.error(error.response.data?.message)
       if (error.response && error.response.status === 401) {
         return console.log("401 - Unauthorized")
       } else if (error.response && error.response.status === 403) {

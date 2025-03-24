@@ -46,19 +46,23 @@ const RegisterPage: React.FC = () => {
     const handleSubmit = async (values: FormDataRegister) => {
         const response = await registerService(values)
         console.log("response: ", response)
-
-        if ('errors' in response && typeof response === 'object') {
-            if (response.errors === null && 'message' in response && response.message) {
-                message.error(response.message + "")
-            } else if (response.errors != null) {
-                Object.entries(response.errors).forEach(([field, error]) => {
-                    message.error(`${field}: ${error}`);
-                });
-            }
-        } else {
-            message.error(MESSAGE.REGISTER_SUCCESSFULLY)
+        if (Boolean(response?.status) === true) {
+            message.success(MESSAGE.REGISTER_SUCCESSFULLY);
             navigate(PATH.LOGIN);
         }
+        // if (response.errors && Object.keys(response.errors).length > 0) {
+        //     // Nếu response.errors có lỗi, duyệt và hiển thị từng lỗi
+        //     Object.entries(response.errors).forEach(([field, error]) => {
+        //         message.error(`${field}: ${error}`);
+        //     });
+        // } else if (response.message) {
+        //     // Nếu không có errors nhưng có message, hiển thị message
+        //     message.error(response.message);
+        // } else {
+        //     message.success(MESSAGE.REGISTER_SUCCESSFULLY);
+        //     navigate(PATH.LOGIN);
+        // }
+
     };
 
     return (

@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AdminDashboard, AdminLogin, AdminManageUser, ApplyPage, ApplySuccess, CustomerOrder, ForgotPassword, Home, InternalServer, JobInfo, JobPage, Login, NotFound, PaymentMethod, PostJob, PostPage, Register, RegisterPremium, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
 import { Dashboard } from "../components";
-import AtWorkDetail from "../pages/atwork-detail";
+import HireFreelancerDetail from "../pages/hire-freelancer-detail";
 
 const AppRouter = () => {
     // const { canAccess } = useRedirect();
@@ -22,14 +22,24 @@ const AppRouter = () => {
             <Route path={PATH.POST_JOB} element={<PostJob />} />
             <Route path={PATH.POST} element={<PostPage />} />
             <Route path={PATH.VIEW_POST} element={<ViewPost />} />
-            <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<AtWorkDetail />} />
+            <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<ArtWorkDetail />} />
+            <Route path={PATH.HIRE_FREELANCER} element={<HireFreelancer />} />
+            <Route path={PATH.JOB_DETAIL} element={<JobDetail />} />
+            <Route path={PATH.HIRE_FREELANCER_DETAIL} element={<HireFreelancerDetail/>} />
             {/* Admin */}
             {/* <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} /> */}
             <Route path={PATH.CUSTOMER}>
                 {/* Customer */}
+                <Route path={PATH.CUSTOMER_MANAGE_SERVICES} element={<ManageFreelancerSerivces />} />
                 <Route path={PATH.CUSTOMER_ORDER} element={<CustomerOrder />} />
                 <Route path={PATH.CUSTOMER_PAYMENT_METHOD} element={<PaymentMethod />} />
                 <Route path={PATH.CUSTOMER_REGISTER_PREMIUM} element={<RegisterPremium />} />
+                <Route path={PATH.CUSTOMER_ADD_NEW_SERVICE} element={<AddNewService />} />
+                <Route path={PATH.CUSTOMER_EDIT_SERVICE} element={<AddNewService />} />
+                <Route path={PATH.CUSTOMER_MANAGE_PORTFOLIO} element={<CustomerManagePortfolio />} />
+                <Route path={PATH.CUSTOMER_PORTFOLIO_DETAIL} element={<PortfolioDetail />} />
+                <Route path={PATH.CUSTOMER_MANAGE_ARTWORKS} element={<ManageArtWork />} />
+                <Route path={PATH.CUSTOMER_MANAGE_JOBS} element={<CustomerManageJob />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path={"/admin/login"} element={<AdminLogin />} />
@@ -38,6 +48,17 @@ const AppRouter = () => {
                 {/* Admin */}
                 <Route path={PATH.ADMIN_MANAGE_USER} element={<AdminManageUser />} />
                 <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} />
+                <Route path={PATH.ADMIN_MANAGE_RECRUITER} element={<AdminManageRecruiter />} />
+                <Route path={PATH.ADMIN_MANAGE_JOBS} element={<AdminManageJobs />} />
+                <Route path={PATH.ADMIN_MANAGE_PORTFOLIOS} element={<AdminManagePortfolios />} />
+                <Route path={PATH.ADMIN_MANAGE_ARTWORKS} element={<AdminManageArtworks />} />
+                <Route path={PATH.ADMIN_MANAGE_SERVICES} element={<AdminManageServices />} />
+                {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
+                <Route path="*" element={<NotFound />} />
+            </Route>
+            <Route path={PATH.STAFF} element={<Dashboard />}>
+                <Route path={PATH.STAFF_DASHBOARD} element={<StaffDashboard />} />{/* Staff */}
+                <Route path={PATH.STAFF_MANAGE_PACKAGES} element={<StaffManagePackages />} />
                 {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>
