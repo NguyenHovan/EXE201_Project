@@ -66,7 +66,8 @@ const ManageArtwork = () => {
 
     const handleUpdateArtwork = async (data: ArtworkData) => {
         if (currentArtwork) {
-            const response = await updateArtworkService(data?.artWorkId + "", data);
+            console.log("currentArtwork: ", currentArtwork)
+            const response = await updateArtworkService(currentArtwork?.id + "", data);
             if (response) {
                 message.success("Artwork updated successfully");
                 getAtWorks(); // Refresh the list
@@ -119,7 +120,7 @@ const ManageArtwork = () => {
                     <Button type="link" onClick={() => showModalUpdate(record)}>Update</Button>
                     <Popconfirm
                         title="Are you sure to delete this artwork?"
-                        onConfirm={() => handleDeleteArtwork(record?.id)}
+                        onConfirm={() => handleDeleteArtwork(record?.id+"")}
                         okText="Yes"
                         cancelText="No"
                     >
@@ -153,7 +154,6 @@ const ManageArtwork = () => {
                     dataSource={atworks}
                     columns={columns}
                     rowKey="id"
-                    pagination={{ pageSize: 5 }} // Adjust pagination as needed
                 />
             </div>
         </div>

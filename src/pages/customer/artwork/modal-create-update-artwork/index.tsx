@@ -16,6 +16,7 @@ export interface ArtworkData {
     categoryIds: string[];
     categories?: string[];
     artWorkId?: string;
+    id?:string
 }
 
 interface ArtworkModalProps {
@@ -35,7 +36,11 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
     useEffect(() => {
         if (initialData && initialData.images) {
             console.log("initialData: ", initialData)
-            form.setFieldsValue(initialData);
+            form.setFieldsValue({
+                ...initialData,
+                categoryIds: initialData.categories,
+                imageUrls: initialData.images
+            });
             setImageUrls(initialData.images); // Set initial image URLs if updating
             setThumbnailUrl(initialData.thumbnailUrl); // Set initial thumbnail URL if updating
         } else {
@@ -200,7 +205,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                 </Form.Item>
 
                 <Form.Item
-                    label="Category IDs"
+                    label="Category"
                     name="categoryIds"
                     rules={[{ required: true, message: 'Please select at least one category!' }]}
                 >

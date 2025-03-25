@@ -40,6 +40,7 @@ export const PATH = {
     ADMIN_MANAGE_SERVICES: 'manage-services',
     ADMIN_LOGIN: 'login',
     ADMIN_HOME: "/",
+    ADMIN_MANAGE_CATEGORIES: "manage-categories",
     ADMIN_MANAGE_RECRUITER: "manage-recruiters",
     //Manager
     MANAGER_LOGIN: 'login',

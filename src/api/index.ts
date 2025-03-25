@@ -36,6 +36,8 @@ export const API = {
     GET_CATEGORIES: "/api/v1/categories",
     GET_CATEGORIE: "/api/v1/categories",
     DELETE_CATEGORIES: "/api/v1/categories",
+    CREATE_CATEGORY: "/api/v1/categories",
+    UPDATE_CATEGORY: "/api/v1/categories",
     //PACKAGES
     GET_PACKAGES: "/api/v1/pro-packages",
     CREATE_PACKAGES: "/api/v1/pro-packages",

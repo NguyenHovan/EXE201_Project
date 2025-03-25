@@ -18,7 +18,7 @@ export const createArtworkService = async (data: ArtworkData) => {
 }
 export const updateArtworkService = async (id: string,data: ArtworkData) => {
     try {
-        const response = await axiosInstance.post(`${API.CUSTOMER_CREATE_ATWORKS}/${id}`,{
+        const response = await axiosInstance.put(`${API.CUSTOMER_CREATE_ATWORKS}/${id}`,{
             ...data
         })
         if (response) {

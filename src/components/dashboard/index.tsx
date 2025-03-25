@@ -44,7 +44,7 @@ const Dashboard: React.FC = () => {
             setItems([
                 getItem('Dashboard', '/admin/', <DesktopOutlined />),
                 getItem('Manage Accounts', '/admin/manage-accounts', <UserOutlined />),
-                getItem('Manage Recruiters', '/admin/manage-recruiters', <UserOutlined />),
+                getItem('Manage Categories', '/admin/manage-categories', <UserOutlined />),
                 getItem('Manage Jobs', '/admin/manage-jobs', <UserOutlined />),
                 getItem('Manage Portfolios', '/admin/manage-portfolios', <UserOutlined />),
                 getItem('Manage Art Works', '/admin/manage-artworks', <UserOutlined />),
