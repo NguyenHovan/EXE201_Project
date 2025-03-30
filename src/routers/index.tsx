@@ -1,16 +1,19 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageCategories, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentMethod, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageCategories, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentFail, PaymentMethod, PaymentSuccess, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import HireFreelancerDetail from "../pages/hire-freelancer-detail";
 
 const AppRouter = () => {
     // const { canAccess } = useRedirect();
+
     return (
         <Routes>
             {/* Guest */}
             <Route path={PATH.INTERNAL_SERVER_ERROR} element={<InternalServer />} />
             <Route path={PATH.LOGIN} element={<Login />} />
+            <Route path={PATH.PAYMENT_SUCCESS} element={<PaymentSuccess />}/>
+            <Route path={PATH.PAYMENT_FAIL} element={<PaymentFail />}/>
             <Route path={PATH.REGISTER} element={<Register />} />
             <Route path={PATH.FORGOT_PASSWORD} element={<ForgotPassword />} />
             <Route path={PATH.HOME} element={<Home />} />
@@ -25,7 +28,7 @@ const AppRouter = () => {
             <Route path={PATH.CUSTOMER_ATWORK_DETAIL} element={<ArtWorkDetail />} />
             <Route path={PATH.HIRE_FREELANCER} element={<HireFreelancer />} />
             <Route path={PATH.JOB_DETAIL} element={<JobDetail />} />
-            <Route path={PATH.HIRE_FREELANCER_DETAIL} element={<HireFreelancerDetail/>} />
+            <Route path={PATH.HIRE_FREELANCER_DETAIL} element={<HireFreelancerDetail />} />
             {/* Admin */}
             {/* <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} /> */}
             <Route path={PATH.CUSTOMER}>

@@ -2,6 +2,9 @@ import { Card, Col, Row } from 'antd';
 import { priceUnit } from '../../consts/variable';
 import { FlagOutlined } from '@ant-design/icons';
 import PremiumButton from '../premium-button';
+import { getUserDataFromLocalStorage } from '../../consts/variable'
+import { createPaymentService } from '../../services/payment.services'
+import { useNavigate } from 'react-router-dom'
 
 interface iPremiumOptionCard {
     price: number;
@@ -11,6 +14,15 @@ interface iPremiumOptionCard {
 }
 
 const PremiumOptionCard = ({ price, month, description, interest }: iPremiumOptionCard) => {
+    // const navigate = useNavigate()
+    // const user = getUserDataFromLocalStorage()
+    // const createPayment = async () => {
+    //     const response = await createPaymentService(user?.userId + "")
+    //     if (response) {
+    //         console.log("createPayment: ", response)
+    //         navigate(response.checkoutUrl)
+    //     }
+    // }
     return (
         <div className='mt-5'>
             <Card className='bg-purple-800 rounded-3xl' style={{ width: 350 }}>
@@ -34,7 +46,7 @@ const PremiumOptionCard = ({ price, month, description, interest }: iPremiumOpti
                  }
                 </div>
                 <div className='text-center mt-20 mb-5'>
-                    <PremiumButton text='Đăng Ký Ngay ' />
+                    <PremiumButton text='Đăng Ký Ngay' />
                 </div>
             </Card>
         </div>

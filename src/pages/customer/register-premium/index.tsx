@@ -2,7 +2,10 @@ import Title from 'antd/es/typography/Title'
 import { PremiumButton, PremiumIcon, PremiumOptionCard } from '../../../components'
 import { Col, Row } from 'antd'
 
+
 const RegisterPremiumPage = () => {
+
+
   return (
     <div className='container mx-auto'>
       <PremiumIcon />
@@ -13,9 +16,10 @@ const RegisterPremiumPage = () => {
       <PremiumButton text='Thử 7 ngày miễn phí' />
 
       <Row>
-        <Col span={8}>
+        <Col span={24}>
+          <div className='justify-items-center'>
           <PremiumOptionCard
-            price={149000}
+            price={10000}
             month={1}
             description='Lựa chọn linh hoạt, có thể hủy bất cứ lúc nào.'
             interest={[
@@ -25,34 +29,7 @@ const RegisterPremiumPage = () => {
               'Có khung và huy hiệu PRE'
             ]}
           />
-        </Col>
-        <Col span={8}>
-        <PremiumOptionCard
-            price={799000}
-            month={6}
-            description='Tiết kiệm hơn với gói thanh toán theo 1 tháng'
-            interest={[
-              'Cho phép đổi màu BG của profile',
-              'Tăng data upload',
-              'Tăng đề xuất',
-              'Có khung và huy hiệu PRE',
-              'Tiết kiệm lên tới 100.000 vnd '
-            ]}
-          />
-        </Col>
-        <Col span={8}>
-        <PremiumOptionCard
-            price={1499000}
-            month={6}
-            description='Tiết kiệm hơn với gói thanh toán theo tháng'
-            interest={[
-              'Cho phép đổi màu BG của profile',
-              'Tăng data upload',
-              'Tăng đề xuất',
-              'Có khung và huy hiệu PRE',
-              'Tiết kiệm lên tới 100.000 vnd '
-            ]}
-          />
+          </div>
         </Col>
       </Row>
       <div className='text-center'>

@@ -2,6 +2,8 @@ export const PATH = {
     /* GUEST PATHS */ 
     HOME: "/",
     LOGIN: "/login",
+    PAYMENT_SUCCESS: "/payment-success",
+    PAYMENT_FAIL: "/payment-fail",
     REGISTER: "/register",
     JOB: "/job",
     JOB_INFO: "/job-info",
