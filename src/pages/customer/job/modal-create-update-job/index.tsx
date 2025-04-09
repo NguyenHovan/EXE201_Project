@@ -11,7 +11,7 @@ export interface JobDataProps {
     timeFrame: string;
     budget: number;
     location: string;
-    fileAttachment: string;
+    fileAttachment: string | null;
     personalInformation: string;
     description: string;
     userId: string;
@@ -42,7 +42,7 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
         const valuesSubmit={
             ...values,
             fileAttachment: fileUrl,
-            userId: user?.userId
+            userId: user?.userId+''
         }
         onSubmit(valuesSubmit);
     };

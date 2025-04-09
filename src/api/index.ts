@@ -16,6 +16,7 @@ export const API = {
     CUSTOMER_GET_ATWORK: "/api/v1/artworks",
     CUSTOMER_DELETE_ATWORK: "/api/v1/artworks",
     CUSTOMER_GET_ATWORKS_BY_CREATOR: "/api/v1/artworks/images-by-creator",
+    STAFF_CHECK_AI: "/api/v1/artworks",
     //JOB
     CUSTOMER_GET_ALL_JOBS: "/api/v1/jobs",
     CUSTOMER_CREATE_JOB: "/api/v1/jobs",
@@ -45,4 +46,8 @@ export const API = {
     DELETE_PACKAGES: "/api/v1/pro-packages",
     //PAYMENT
     CREATE_PAYMENT: "/api/payment/create",
+    //PACKAGES
+    CREATE_REPORT: "/api/Report",
+    STAFF_GET_REPORTS: "/api/Report",
+    STAFF_CHANGE_STATUS_REPORT: "/api/Report",
 }  

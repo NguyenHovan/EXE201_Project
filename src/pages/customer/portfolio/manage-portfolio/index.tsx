@@ -104,7 +104,7 @@ const ManagePortfolio = () => {
         {
             title: 'Action',
             key: 'action',
-            render: (text: string, record: Portfolio) => (
+            render: ( record: Portfolio) => (
                 <Popconfirm
                     title="Are you sure to delete this portfolio?"
                     onConfirm={() => handleDeletePortfolio(record.id)}

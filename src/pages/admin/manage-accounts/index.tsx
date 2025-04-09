@@ -5,7 +5,7 @@ import moment from 'moment';
 import { Modal } from 'antd';
 import { adminCreateAccount, adminGetAccountService, adminUpdateAccount } from '../../../services/admin.services';
 import { IMG } from '../../../consts/variable';
-import  { AccountCreateProps } from '../../../components/modal-create-update-account';
+import { AccountCreateProps } from '../../../components/modal-create-update-account';
 import { EditOutlined } from '@ant-design/icons';
 import config from '../../../secret';
 import ModalCreateUpdateAccount from './modal-create-update-account';
@@ -27,9 +27,9 @@ const ManageUser = () => {
     const [form] = Form.useForm<AccountCreateProps>();
 
     const showModal = (account?: AccountCreateProps) => {
-     if(account){
-        setAccountNeedToUpdate(account);
-     }
+        if (account) {
+            setAccountNeedToUpdate(account);
+        }
         console.log("account: ", account)
         setIsModalOpen(true);
     };
@@ -56,7 +56,7 @@ const ManageUser = () => {
             role: accountNeedToUpdate?.role || 1,
         });
     };
-    
+
     const handleCancel = () => {
         form.resetFields()
         setIsModalOpen(false);
@@ -109,7 +109,8 @@ const ManageUser = () => {
         try {
             if (accountNeedToUpdate) {
                 // Update existing account
-                const response = await adminUpdateAccount(values, accountNeedToUpdate?.id+""); // Assuming you have a service for updating accounts
+                const response = await adminUpdateAccount(values, accountNeedToUpdate?.id + ""); // Assuming you have a service for updating accounts
+                console.log("response: ",response)
                 if (response) {
                     message.success("Account updated successfully");
                 } else {
@@ -193,9 +194,9 @@ const ManageUser = () => {
             <ModalCreateUpdateAccount
                 accountNeedToUpdate={accountNeedToUpdate || null}
                 form={form}
-    isModalOpen={isModalOpen}
-    handleCancel={handleCancel}
-    onSubmit={handleAddOrUpdateAccount}
+                isModalOpen={isModalOpen}
+                handleCancel={handleCancel}
+                onSubmit={handleAddOrUpdateAccount}
             />
 
             <Modal />
@@ -277,7 +278,7 @@ const ManageUser = () => {
                     <Button type='primary'>Search</Button>
                 </div>
                 <div>
-                    <Button onClick={()=>showModal()} type='primary'>Create</Button>
+                    <Button onClick={() => showModal()} type='primary'>Create</Button>
                 </div>
             </div>
             <Table dataSource={accounts} columns={columns} />

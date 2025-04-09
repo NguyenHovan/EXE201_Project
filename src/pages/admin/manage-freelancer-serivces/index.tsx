@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Image, Table, Modal, message, Button } from "antd"; // Import Modal and message from Ant Design
+import { Image, Table, Modal, message } from "antd"; // Import Modal and message from Ant Design
 import { DeleteOutlined } from "@ant-design/icons";
 import { getUserDataFromLocalStorage } from "../../../consts/variable";
 import { deleteService, getServices } from "../../../services/freelancer.services";

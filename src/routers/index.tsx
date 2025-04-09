@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageCategories, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, NotFound, PaymentFail, PaymentMethod, PaymentSuccess, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageCategories, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CheckAiArtWorks, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, ManageReports, NotFound, PaymentFail, PaymentMethod, PaymentSuccess, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import HireFreelancerDetail from "../pages/hire-freelancer-detail";
 
@@ -63,6 +63,8 @@ const AppRouter = () => {
             <Route path={PATH.STAFF} element={<Dashboard />}>
                 <Route path={PATH.STAFF_DASHBOARD} element={<StaffDashboard />} />{/* Staff */}
                 <Route path={PATH.STAFF_MANAGE_PACKAGES} element={<StaffManagePackages />} />
+                <Route path={PATH.STAFF_CHECK_AI} element={<CheckAiArtWorks />} />
+                <Route path={PATH.STAFF_MANAGE_REPORTS} element={<ManageReports />} />
                 {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>

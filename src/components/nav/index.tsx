@@ -59,9 +59,10 @@ const Navbar = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     navigate('/')
+    window.location.reload()
   }
 
-  const goToRegister = ()=>{
+  const goToRegister = () => {
     navigate('/register')
   }
   return (
@@ -87,8 +88,8 @@ const Navbar = () => {
           {
             !isLogin ? <>
               <Col span={12}>
-                <div onClick={()=>goToRegister()}>
-                Sign up
+                <div onClick={() => goToRegister()}>
+                  Sign up
                 </div>
               </Col>
               <Col span={12}>

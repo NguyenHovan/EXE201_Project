@@ -1,20 +1,14 @@
-export interface ProPackageDataProps {
-    id?: string; // Optional for new packages
-    name: string;
-    price: number;
-    features: string[];
-    duration: string;
-}
 
 import React, { useEffect } from 'react';
 import { Modal, Form, Input, Button, InputNumber, Select } from 'antd';
+import { ProPackage } from '../manage-packages';
 
 export interface ModalCreateUpdateProPackageDataPropsProps {
-    proPackage?: ProPackageDataProps | null; // For updating an existing package
+    proPackage?: ProPackage | null; // For updating an existing package
     form: any; // Ant Design form instance
     isModalOpen: boolean;
     handleCancel: () => void;
-    onSubmit: (data: ProPackageDataProps) => void; // Function to handle form submission
+    onSubmit: (data: ProPackage) => void; // Function to handle form submission
 }
 
 const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackageDataPropsProps> = ({ proPackage, form, isModalOpen, handleCancel, onSubmit }) => {
@@ -28,7 +22,7 @@ const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackage
         }
     }, [proPackage, form]);
 
-    const handleFinish = (values: ProPackageDataProps) => {
+    const handleFinish = (values: ProPackage) => {
         // Split the features string back into an array
         // values.features = values.features.split(',').map(feature => feature.trim());
         onSubmit(values);

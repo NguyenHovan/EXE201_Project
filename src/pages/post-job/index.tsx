@@ -2,7 +2,7 @@ import { useState } from "react";
 import { PostJobCompany, PostJobPersonal } from "../../components";
 import { FormProps } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Select } from 'antd';
+import { Button, Form, Input } from 'antd';
 import TextArea from "antd/es/input/TextArea";
 
 
@@ -17,16 +17,7 @@ const LOCATION = ["Hồ Chí Minh",
     "Đà Nẵng"
 ]
 const PostJob = () => {
-    const { Option } = Select;
 
-    const layout = {
-        labelCol: { span: 8 },
-        wrapperCol: { span: 16 },
-    };
-
-    const tailLayout = {
-        wrapperCol: { offset: 8, span: 16 },
-    };
     const [checked, setChecked] = useState<boolean>(false)
 
 

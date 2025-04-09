@@ -1,7 +1,25 @@
 {
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "noEmit": false,
+    "skipLibCheck": true,
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": false,
+    "isolatedModules": false,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "allowJs": true
+  },
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }

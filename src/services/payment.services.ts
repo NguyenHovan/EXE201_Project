@@ -1,5 +1,4 @@
 import { API } from "../api"
-import { ProPackage } from "../pages/staff/manage-packages"
 import axiosInstance from "./axiosInstance"
 interface createPaymentServiceProps{
     checkoutUrl: string

@@ -4,6 +4,7 @@ export interface ProPackage {
     price: number;
     features: string[];
     duration: string;
+    creationDate: Date
 }
 
 import { useEffect, useState } from 'react';
@@ -12,7 +13,7 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { createPackageService, deletePackageService, getPackages, updatePackageService } from '../../../services/packages.services';
 import { priceUnit } from '../../../consts/variable';
 import ModalCreateUpdateProPackageDataProps from '../modal-craete-update-package';
-import { Cate } from '../../admin/manage-artworks';
+
 
 const ManageProPackage = () => {
     const [packages, setPackages] = useState<ProPackage[]>([]);
@@ -28,8 +29,10 @@ const ManageProPackage = () => {
     const getPackagesFromStaff = async () => {
         // Replace this with your actual data fetching logic
         const response = await getPackages() // Example API call
-        const sortedPackages = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
-        setPackages(sortedPackages);
+        if (response) {
+            const sortedPackages = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
+            setPackages(sortedPackages);
+        }
     };
 
     const handleDelete = async (id: string) => {
@@ -69,13 +72,13 @@ const ManageProPackage = () => {
         {
             title: 'Action',
             key: 'action',
-            render: (text: string, record: ProPackage) => (
+            render: ( record: ProPackage) => (
                 <div className='flex gap-2'>
-                    <EditOutlined onClick={()=>showModalUpdate(record)}  className='text-blue-500'/>
+                    <EditOutlined onClick={() => showModalUpdate(record)} className='text-blue-500' />
                     <div>
                         <Popconfirm
                             title="Are you sure to delete this package?"
-                            onConfirm={() => handleDelete(record.id+"")}
+                            onConfirm={() => handleDelete(record.id + "")}
                             okText="Yes"
                             cancelText="No"
                         >
@@ -87,7 +90,7 @@ const ManageProPackage = () => {
         },
     ];
 
-    const showModalUpdate=(record: ProPackage)=>{
+    const showModalUpdate = (record: ProPackage) => {
         console.log("record: ", record)
         setCurrentPackage(record)
         setIsModalOpen(true)
@@ -129,7 +132,7 @@ const ManageProPackage = () => {
         }
     };
     return (
-        <div className="container">
+        <div className="container mx-auto">
             <div className="mb-4">
                 <Button onClick={() => { setIsModalOpen(true); setCurrentPackage(null); }} type="primary">Add Package</Button>
             </div>

@@ -1,7 +1,7 @@
 import { DownCircleOutlined, FileOutlined } from '@ant-design/icons';
 import { Card, Col, Row } from 'antd';
 import ReportIcon from '@mui/icons-material/Report';
-import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+
 const PaymentMethod = () => {
     return (
         <div className='container mx-auto'>

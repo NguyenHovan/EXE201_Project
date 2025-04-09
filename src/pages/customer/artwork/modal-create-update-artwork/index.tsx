@@ -16,7 +16,8 @@ export interface ArtworkData {
     categoryIds: string[];
     categories?: string[];
     artWorkId?: string;
-    id?:string
+    id?:string,
+    status: number
 }
 
 interface ArtworkModalProps {

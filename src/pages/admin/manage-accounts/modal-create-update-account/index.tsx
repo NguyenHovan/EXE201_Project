@@ -37,21 +37,25 @@ const ModalCreateUpdateAccount: React.FC<ModalCreateAccountProps> = ({ accountNe
     }, [accountNeedToUpdate, form]);
 
     const handleFinish = (values: AccountCreateProps) => {
+        console.log("values: ", values)
         if (typeof values.role === 'string') {
             let numberRole;
             switch (values.role) {
-                case "Admin":numberRole=== 0
+                case "Admin": numberRole === 0
                     break
-                case "Staff":numberRole=== 1
+                case "Staff": numberRole === 1
                     break;
-                case "Customer":numberRole=== 2
+                case "Customer": numberRole === 2
                     break;
             }
             const valuesSubmit = {
                 ...values,
-                    role: numberRole
+                role: numberRole
             }
+            console.log("valuesSubmit: ", valuesSubmit)
             onSubmit(valuesSubmit);
+        }else{
+            onSubmit(values);
         }
         // Call the onSubmit function passed from the parent component
 

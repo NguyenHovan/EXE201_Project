@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import JobCard from '../../components/job-card'
 import { getJobsService } from '../../services';
 import { Link } from 'react-router-dom';

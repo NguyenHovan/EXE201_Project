@@ -1,4 +1,4 @@
-import { Avatar, Button, Form, Input, Modal, Select, Space, Tag, Upload, message } from "antd";
+import {  Button, Form, Input, Modal, Select, Tag, Upload, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { getAtWorksByCreator } from "../../../../services/atworrk.services";
@@ -171,8 +171,7 @@ const PortfolioModal = ({
             style={{ width: "100%" }}
             placeholder="Chọn ảnh"
             tagRender={(props) => {
-              const { label, value, closable, onClose } = props;
-              const item = atworks.find((art) => art.id === value);
+              const { label, closable, onClose } = props;
 
               return (
                 <Tag

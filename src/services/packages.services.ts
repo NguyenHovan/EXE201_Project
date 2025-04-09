@@ -1,9 +1,8 @@
 import { API } from "../api"
-import { ArtworkData } from "../pages/customer/artwork/modal-create-update-artwork"
 import { AtWork } from "../pages/home"
 import { ProPackage } from "../pages/staff/manage-packages"
 import axiosInstance from "./axiosInstance"
-
+// STAFF PACKAGE
 export const createPackageService = async (data: ProPackage) => {
     try {
         const response = await axiosInstance.post(API.CREATE_PACKAGES, data)

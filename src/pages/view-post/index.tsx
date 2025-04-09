@@ -2,7 +2,7 @@ import { CloseCircleOutlined, FlagOutlined, HeartOutlined, InfoCircleOutlined, L
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { IMG } from '../../consts/variable';
 import { useState } from 'react';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 const ViewPost = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 

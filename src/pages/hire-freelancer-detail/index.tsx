@@ -4,7 +4,6 @@ import { priceUnit } from '../../consts/variable';
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { getService } from '../../services/freelancer.services';
-import { Service } from '../admin/manage-freelancer-serivces';
 import { NewService } from '../customer/freelancer-service/add-new-service';
 const { Title, Paragraph } = Typography;
 

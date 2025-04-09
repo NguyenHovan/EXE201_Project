@@ -6,7 +6,9 @@ import { MESSAGE } from '../../consts';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { IMG } from '../../consts/variable';
-
+interface Decode{
+    role: string
+}
 const LoginPage = () => {
     const [form] = Form.useForm();
     const navigate = useNavigate();
@@ -16,21 +18,30 @@ const LoginPage = () => {
         password?: string;
     };
 
-    const onFinish: FormProps<FieldType>['onFinish'] = async(values) => {
-      if(values.email && values.password){
-        const response = await loginService(values.email, values.password)
-        console.log("response: ", response)
-        if(response && response.data.accessToken){
-            const decodedToken = jwtDecode(response.data.accessToken);
-            console.log("decodedToken: ",decodedToken)
-            navigate('/')
-            localStorage.setItem("token", response.data.accessToken)
-            localStorage.setItem("user", JSON.stringify(decodedToken))
-            message.success(MESSAGE.LOGIN_SUCCESSFULLY)  
-        }else{
-            message.error(MESSAGE.LOGIN_FAILED) 
+    const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+        if (values.email && values.password) {
+            const response = await loginService(values.email, values.password)
+            console.log("response: ", response)
+            if (response && response.data.accessToken) {
+                const decodedToken: Decode = jwtDecode(response.data.accessToken);
+                console.log("decodedToken: ", decodedToken)
+
+                if (decodedToken?.role === 'Customer') {
+                    navigate('/')
+                } else if (decodedToken?.role === 'Admin') {
+                    navigate('/admin')
+                }
+                else if (decodedToken?.role === 'Staff') {
+                    navigate('/staff')
+                }
+                window.location.reload()
+                localStorage.setItem("token", response.data.accessToken)
+                localStorage.setItem("user", JSON.stringify(decodedToken))
+                message.success(MESSAGE.LOGIN_SUCCESSFULLY)
+            } else {
+                message.error(MESSAGE.LOGIN_FAILED)
+            }
         }
-      }
         console.log('Success:', values);
     };
 
@@ -42,9 +53,9 @@ const LoginPage = () => {
         <div>
             <section className="bg-gray-50">
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                    <div  className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+                    <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                         <img className=" mr-2" src={IMG.SHOCA_IMG} alt="logo" />
-                
+
                     </div>
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:border-gray-700">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8 text-black">
@@ -81,12 +92,12 @@ const LoginPage = () => {
                                     {/* <Button type="primary" htmlType="submit" className="w-full">
                                         Submit
                                     </Button> */}
-                                   <Button  htmlType="submit" className="w-full text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</Button>
+                                    <Button htmlType="submit" className="w-full text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</Button>
                                 </Form.Item>
                             </Form>
                             <form className="space-y-4 md:space-y-6" action="#">
-                               
-                                
+
+
                                 <button disabled className="w-full text-center" type="button">or sign up with</button>
                                 <button className="w-full flex items-center justify-center bg-white dark:bg-gray-900 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                     <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="-0.5 0 48 48" version="1.1">
