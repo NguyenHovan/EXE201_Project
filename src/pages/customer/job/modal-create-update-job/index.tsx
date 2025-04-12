@@ -29,6 +29,7 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
     const [form] = Form.useForm();
     const [fileUrl, setFileUrl] = useState<string | null>(null); // Change to a single URL
     const user = getUserDataFromLocalStorage()
+    
     useEffect(() => {
         if (initialData) {
             form.setFieldsValue(initialData);

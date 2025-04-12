@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { PATH } from "../consts"
-import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageCategories, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CheckAiArtWorks, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, ManageReports, NotFound, PaymentFail, PaymentMethod, PaymentSuccess, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
+import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageCategories, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CheckAiArtWorks, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, CustomerProfile, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, ManageReports, NotFound, PaymentFail, PaymentMethod, PaymentSuccess, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import HireFreelancerDetail from "../pages/hire-freelancer-detail";
 
@@ -43,6 +43,7 @@ const AppRouter = () => {
                 <Route path={PATH.CUSTOMER_PORTFOLIO_DETAIL} element={<PortfolioDetail />} />
                 <Route path={PATH.CUSTOMER_MANAGE_ARTWORKS} element={<ManageArtWork />} />
                 <Route path={PATH.CUSTOMER_MANAGE_JOBS} element={<CustomerManageJob />} />
+                <Route path={PATH.CUSTOMER_MANAGE_PROFILE} element={<CustomerProfile />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path={"/admin/login"} element={<AdminLogin />} />

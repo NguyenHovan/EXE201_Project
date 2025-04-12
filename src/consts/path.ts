@@ -32,6 +32,7 @@ export const PATH = {
     CUSTOMER_MANAGE_ARTWORKS: "manage-artworks",
     CUSTOMER_MANAGE_JOBS: "manage-jobs",
     CUSTOMER_PORTFOLIO_DETAIL: "portfolios/:id",
+    CUSTOMER_MANAGE_PROFILE: "profile",
     //admin
     ADMIN: '/admin/*',
     ADMIN_DASHBOARD: '',

@@ -1,5 +1,5 @@
 import Title from 'antd/es/typography/Title'
-import { PremiumButton, PremiumIcon, PremiumOptionCard } from '../../../components'
+import {  PremiumIcon, PremiumOptionCard } from '../../../components'
 import { Col, Row } from 'antd'
 
 
@@ -7,13 +7,12 @@ const RegisterPremiumPage = () => {
 
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto pb-10'>
       <PremiumIcon />
       <Title className='mt-5' level={1}>
         Nâng tầm Portfolio của bạn – Đăng ký tài khoản Premium ngay!
         <p className='text-orange-300 ' >Nơi bạn thể hiện đẳng cấp và sự chuyên nghiệp.</p>
       </Title>
-      <PremiumButton text='Thử 7 ngày miễn phí' />
 
       <Row>
         <Col span={24}>

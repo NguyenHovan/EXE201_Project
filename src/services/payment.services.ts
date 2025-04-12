@@ -6,7 +6,7 @@ interface createPaymentServiceProps{
 export const createPaymentService = async (accountId: string) => {
     try {
         const response: createPaymentServiceProps = await axiosInstance.post(API.CREATE_PAYMENT, {
-            packageId: "1990184c-1f18-46f5-3a75-08dd65218b1b",
+            packageId: "5500e9cf-13c1-48cf-117a-08dd79456e0e",
             accountId: accountId
         })
         if (response) {

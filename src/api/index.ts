@@ -1,5 +1,8 @@
 
 export const API = {
+    //ACCOUNT
+    GET_PROFILE: "/api/v1/accounts",
+    EDIT_PROFILE: "/api/v1/accounts",
     //AUTH
     LOGIN: "/api/v1/authentication/login",
     REGISTER: "/api/v1/authentication/register",
@@ -50,4 +53,9 @@ export const API = {
     CREATE_REPORT: "/api/Report",
     STAFF_GET_REPORTS: "/api/Report",
     STAFF_CHANGE_STATUS_REPORT: "/api/Report",
+    //RATING
+    GET_RATINGS: "/api/v1/ratings",
+    CREATE_RATINGS: "/api/v1/ratings",
+    REP_RATINGS: "/api/v1/ratings/comments",
+    DELETE_RATINGS: "/api/v1/ratings",
 }  
