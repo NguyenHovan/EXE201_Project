@@ -7,6 +7,7 @@ import JobModal, { JobDataProps } from '../modal-create-update-job';
 import { getCategoriesService } from '../../../../services/category.services';
 import { Cate } from '../../artwork/manage-artwork';
 import { createJobService, deleteJobService, updateJobService } from '../../../../services/job.service';
+import { priceUnit } from '../../../../consts/variable';
 
 const CustomerManageJob = () => {
     const [jobs, setJobs] = useState<JobCardProps[]>([]);
@@ -93,7 +94,7 @@ const CustomerManageJob = () => {
             title: 'Budget',
             dataIndex: 'budget',
             key: 'budget',
-            render: (budget: number) => `$${budget.toFixed(2)}`,
+            render: (budget: number) => priceUnit(budget),
         },
         {
             title: 'Location',

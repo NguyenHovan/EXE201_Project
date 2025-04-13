@@ -1,4 +1,4 @@
-import { Avatar, Col, Input, Row } from 'antd';
+import { Avatar, Col, Input, message, Row } from 'antd';
 import type { GetProps, MenuProps } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUserDataFromLocalStorage } from '../../consts/variable';
@@ -13,6 +13,10 @@ import {
   MoonOutlined,
   CommentOutlined,
 } from "@ant-design/icons"
+import { UserProfile } from '../../pages/customer/profile';
+import { useEffect, useState } from 'react';
+import { CustomerGetProfile } from '../../services/account.services';
+
 type SearchProps = GetProps<typeof Input.Search>;
 const { Search } = Input;
 
@@ -20,16 +24,37 @@ const Navbar = () => {
   const navigate = useNavigate();
   const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
   const isLogin = getUserDataFromLocalStorage();
+
+  const user = getUserDataFromLocalStorage()
+  const [profile, setProfile] = useState<UserProfile>()
+
+  useEffect(() => {
+    fetchUserProfile()
+  }, [])
+
+  const fetchUserProfile = async () => {
+    try {
+      if (user) {
+        const userData = await CustomerGetProfile(user?.userId + "")
+        if (userData) {
+          console.log("userData: ", userData)
+          setProfile(userData?.data)
+        }
+      }
+    } catch (error) {
+      console.error("Không thể tải thông tin hồ sơ:", error)
+      message.error("Không thể tải thông tin hồ sơ")
+    }
+  }
   const items: MenuProps["items"] = [
     {
       key: "profile",
       label: (
         <div className="py-2 px-1 border-b border-gray-700 mb-2">
           <div className="flex items-center gap-3 mt-3 mb-2">
-            <div className="bg-purple-600 rounded-full w-8 h-8 flex items-center justify-center text-white">
-              <DollarOutlined />
+            <div>
+              {profile?.email}
             </div>
-            <div>Shoca</div>
           </div>
         </div>
       ),
@@ -37,10 +62,12 @@ const Navbar = () => {
     {
       key: "view-profile",
       label: (
-        <div className="flex items-center gap-3 py-2">
-          <EyeOutlined />
-          <span>Xem tất cả trang cá nhân</span>
-        </div>
+        <Link to={'/customer/profile'}>
+          <div className="flex items-center gap-3 py-2">
+            <EyeOutlined />
+            <span>Xem tất cả trang cá nhân</span>
+          </div>
+        </Link>
       ),
       onClick: () => {
         // Handle view profile action
@@ -66,8 +93,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <QuestionCircleOutlined />
           <Link to={"/customer/manage-portfolios"} >
-          Portfolio
-        </Link>
+            Portfolio
+          </Link>
         </div>
       ),
       onClick: () => {
@@ -80,8 +107,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <MoonOutlined />
           <Link to={"/customer/manage-artworks"} >
-          Atwork
-        </Link>
+            Atwork
+          </Link>
         </div>
       ),
       onClick: () => {
@@ -94,8 +121,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <CommentOutlined />
           <Link to={"/customer/manage-jobs"} >
-          Job
-        </Link>
+            Job
+          </Link>
         </div>
       ),
       onClick: () => {
@@ -123,7 +150,14 @@ const Navbar = () => {
 
   const goToRegister = () => {
     navigate('/register')
+    window.location.reload()
   }
+
+  const goToLogin = () => {
+    navigate('/login')
+    window.location.reload()
+  }
+
   return (
     <Row className='bg-purple-700 flex items-center text-white py-1'>
       <Col span={4}>
@@ -147,21 +181,21 @@ const Navbar = () => {
           {
             !isLogin ? <>
               <Col span={12}>
-                <div onClick={() => goToRegister()}>
-                  Sign up
+                <div className='cursor-pointer' onClick={() => goToRegister()}>
+                  Đăng Ký
                 </div>
               </Col>
               <Col span={12}>
-                <Link to={"/login"}>
-                  Log in
-                </Link>
+                <div className='cursor-pointer' onClick={() => goToLogin()}>
+                  Đăng Nhập
+                </div>
               </Col>
             </>
               :
               <>
                 <Dropdown menu={{ items }}>
                   <a onClick={(e) => e.preventDefault()}>
-                    <Avatar size="large" icon={<UserOutlined />} />
+                    <Avatar size="large" icon={!profile?.avatarUrl && <UserOutlined />} src={profile?.avatarUrl} />
                   </a>
                 </Dropdown>
               </>

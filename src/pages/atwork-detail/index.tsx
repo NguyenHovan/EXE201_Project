@@ -111,7 +111,7 @@ const AtWorkDetail = () => {
         }
     }
 
-    const handleReplySubmit = async (parentId: string) => {
+    const handleReplySubmit = async (ratingId: string) => {
         if (!replyText.trim()) {
             return
         }
@@ -127,7 +127,8 @@ const AtWorkDetail = () => {
             const payload = {
                 accountId: user.userId,
                 commentText: replyText,
-                parentCommentId: parentId,
+                ratingId: ratingId,
+                parentCommentId: ''
             }
 
             const success = await customerReply(payload)
@@ -160,12 +161,28 @@ const AtWorkDetail = () => {
                     <Comment
                         author={<a>{reply.customerName}</a>}
                         avatar={<Avatar icon={<UserOutlined />} />}
-                        content={<p>{reply.comments}</p>}
+                        content={<p>{reply?.commentText}</p>}
                         datetime={
-                            <Tooltip title={moment(reply.creationDate).format("YYYY-MM-DD HH:mm:ss")}>
-                                <span>{moment(reply.creationDate).fromNow()}</span>
-                            </Tooltip>
+                            <Tooltip title={moment(reply.creationDate).add(7, 'hours').format("YYYY-MM-DD HH:mm:ss")}>
+                            <span>{moment(reply.creationDate).add(7, 'hours').fromNow()}</span>
+                        </Tooltip>                          
                         }
+                        actions={user && [
+                            <div className="flex gap-2">
+                                <div>
+                                    {
+                                        reply.customerId === user.userId &&
+                                        <span
+                                            key="delete-comment"
+                                            onClick={() => handleDeleteComment(reply.id)}
+                                            className=" cursor-pointer"
+                                        >
+                                            <Button className="text-red-500"> Xóa</Button>
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                        ]}
                     />
                 )}
             />

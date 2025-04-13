@@ -3,10 +3,11 @@ import axiosInstance from "./axiosInstance"
 interface createPaymentServiceProps{
     checkoutUrl: string
 }
-export const createPaymentService = async (accountId: string) => {
+
+export const createPaymentService = async (accountId: string, packageId: string) => {
     try {
         const response: createPaymentServiceProps = await axiosInstance.post(API.CREATE_PAYMENT, {
-            packageId: "5500e9cf-13c1-48cf-117a-08dd79456e0e",
+            packageId: packageId,
             accountId: accountId
         })
         if (response) {
@@ -17,4 +18,19 @@ export const createPaymentService = async (accountId: string) => {
         console.log("createPackageService-error: ", error)
     }
 }
+
+export const PaymentReturn = async (orderCode: string, status: string,  paymentLinkId: string , code: string) => {
+    try {
+        const response: createPaymentServiceProps = await axiosInstance.get(
+            `/api/payment/return?orderCode=${orderCode}&status=${status}&paymentLinkId=${paymentLinkId}&code=${code}`
+        )
+        if (response) {
+            console.log("PaymentReturn: ", response)
+            return response 
+        } 
+    } catch (error) {
+        console.log("PaymentReturn-error: ", error)
+    }
+}
+
 

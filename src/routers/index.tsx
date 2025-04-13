@@ -1,12 +1,18 @@
-import { Route, Routes } from "react-router-dom"
-import { PATH } from "../consts"
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
+import { PATH, roles } from "../consts"
 import { AddNewService, AdminDashboard, AdminLogin, AdminManageArtworks, AdminManageCategories, AdminManageJobs, AdminManagePortfolios, AdminManageRecruiter, AdminManageServices, AdminManageUser, ApplyPage, ApplySuccess, ArtWorkDetail, CheckAiArtWorks, CustomerManageJob, CustomerManagePortfolio, CustomerOrder, CustomerProfile, ForgotPassword, HireFreelancer, Home, InternalServer, JobDetail, JobInfo, JobPage, Login, ManageArtWork, ManageFreelancerSerivces, ManageReports, NotFound, PaymentFail, PaymentMethod, PaymentSuccess, PortfolioDetail, PostJob, PostPage, Register, RegisterPremium, StaffDashboard, StaffManagePackages, ViewPost } from "../pages"
 import { Dashboard } from "../components";
 import HireFreelancerDetail from "../pages/hire-freelancer-detail";
+import { useRedirect } from "../hooks";
 
 const AppRouter = () => {
-    // const { canAccess } = useRedirect();
-
+  
+    const { canAccess } = useRedirect();
+    const navigate = useNavigate()
+    const goToHome  = ()=>{
+        navigate('/')
+        window.location.reload()
+    }
     return (
         <Routes>
             {/* Guest */}
@@ -31,7 +37,7 @@ const AppRouter = () => {
             <Route path={PATH.HIRE_FREELANCER_DETAIL} element={<HireFreelancerDetail />} />
             {/* Admin */}
             {/* <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} /> */}
-            <Route path={PATH.CUSTOMER}>
+            <Route path={PATH.CUSTOMER}  element={!canAccess([roles.CUSTOMER]) && <Navigate to={PATH.HOME} />}>
                 {/* Customer */}
                 <Route path={PATH.CUSTOMER_MANAGE_SERVICES} element={<ManageFreelancerSerivces />} />
                 <Route path={PATH.CUSTOMER_ORDER} element={<CustomerOrder />} />
@@ -46,9 +52,7 @@ const AppRouter = () => {
                 <Route path={PATH.CUSTOMER_MANAGE_PROFILE} element={<CustomerProfile />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path={"/admin/login"} element={<AdminLogin />} />
-            {/* <Route path={PATH.ADMIN} element={canAccess([roles.ADMIN]) ? <Dashboard /> : <Navigate to={PATH.HOME} />}> */}
-            <Route path={PATH.ADMIN} element={<Dashboard />}>
+            <Route path={PATH.ADMIN}  element={canAccess([roles.ADMIN]) ? <Dashboard /> : <Navigate to={PATH.HOME} />}>
                 {/* Admin */}
                 <Route path={PATH.ADMIN_MANAGE_USER} element={<AdminManageUser />} />
                 <Route path={PATH.ADMIN_DASHBOARD} element={<AdminDashboard />} />
@@ -58,17 +62,16 @@ const AppRouter = () => {
                 <Route path={PATH.ADMIN_MANAGE_ARTWORKS} element={<AdminManageArtworks />} />
                 <Route path={PATH.ADMIN_MANAGE_SERVICES} element={<AdminManageServices />} />
                 <Route path={PATH.ADMIN_MANAGE_CATEGORIES} element={<AdminManageCategories />} />
-                {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path={PATH.STAFF} element={<Dashboard />}>
+            <Route path={PATH.STAFF} element={canAccess([roles.STAFF]) ? <Dashboard /> : <Navigate to={PATH.HOME} />}>
                 <Route path={PATH.STAFF_DASHBOARD} element={<StaffDashboard />} />{/* Staff */}
                 <Route path={PATH.STAFF_MANAGE_PACKAGES} element={<StaffManagePackages />} />
                 <Route path={PATH.STAFF_CHECK_AI} element={<CheckAiArtWorks />} />
                 <Route path={PATH.STAFF_MANAGE_REPORTS} element={<ManageReports />} />
-                {/* <Route path={PATH.ADMIN_MANAGE_USER} element={canAccess([roles.ADMIN])  ? <AdminManageUser /> : <Navigate to={PATH.HOME} />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
         </Routes>
     )
 }

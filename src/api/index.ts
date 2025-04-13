@@ -12,6 +12,7 @@ export const API = {
     ADMIN_CREATE_ACCOUNTS: "/api/v1/accounts",
     ADMIN_UPDATE_ACCOUNTS: "/api/v1/accounts",
     ADMIN_GET_ALL_RECRUITER: "/api/recruiter",
+    ADMIN_GET_ALL_STATISTICS: "/api/v1/statistics",
     //ATWORK
     CUSTOMER_GET_ALL_ATWORKS: "/api/v1/artworks",
     CUSTOMER_CREATE_ATWORKS: "/api/v1/artworks",
@@ -49,6 +50,7 @@ export const API = {
     DELETE_PACKAGES: "/api/v1/pro-packages",
     //PAYMENT
     CREATE_PAYMENT: "/api/payment/create",
+    RETURN_PAYMENT: "/api/payment/return",
     //PACKAGES
     CREATE_REPORT: "/api/Report",
     STAFF_GET_REPORTS: "/api/Report",

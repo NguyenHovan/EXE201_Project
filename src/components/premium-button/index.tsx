@@ -6,18 +6,16 @@ import { PATH } from '../../consts';
 
 interface iPremiumButton {
     text: string;
+    packageId: string
 }
 
-const PremiumButton = ({ text }: iPremiumButton) => {
+const PremiumButton = ({ text, packageId }: iPremiumButton) => {
     const user = getUserDataFromLocalStorage();
     const navigate = useNavigate(); // Sử dụng useNavigate để điều hướng
     const [searchParams] = useSearchParams();
     // Kiểm tra tham số URL khi component được render
     useEffect(() => {
 		const code = searchParams.get('code');
-
-
-
 		// Set a 3-second delay before processing the redirect
 		const timer = setTimeout(async () => {
 			// if (!code) {
@@ -40,7 +38,7 @@ const PremiumButton = ({ text }: iPremiumButton) => {
 	}, [searchParams, navigate]);
 
     const createPayment = async () => {
-        const response = await createPaymentService(user?.userId + "");
+        const response = await createPaymentService(user?.userId + "", packageId);
         if (response) {
             console.log("createPayment: ", response);
             window.location.href = response.checkoutUrl; // Chuyển hướng đến URL thanh toán

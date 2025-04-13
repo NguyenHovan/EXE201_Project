@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PaymentReturn } from '../../../../services/payment.services';
 
 
 const PaymentSuccess: React.FC = () => {
   const navigate = useNavigate()
+  const queryParams = new URLSearchParams(window.location.search);
+
+  const code = queryParams.get("code");
+  const id = queryParams.get("id");
+  const status = queryParams.get("status");
+  const orderCode = queryParams.get("orderCode");
+
+  useEffect(() => {
+    returnPayment()
+  }, [code, id, status, orderCode])
+
+  const returnPayment = async () => {
+    if (orderCode && id && status && code) {
+      await PaymentReturn(orderCode, status, id, code)
+    }
+  }
 
   const handleGoHome = () => {
     navigate('/'); // Điều hướng về trang chính

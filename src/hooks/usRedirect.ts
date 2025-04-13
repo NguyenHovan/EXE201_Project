@@ -5,12 +5,6 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PATH, roles } from "../consts";
 
-// export const role = {
-//     ADMIN: "ADMIN",
-//     CLINIC_OWNER: "CLINICOWNER",
-//     DOCTOR: "DOCTOR",
-//     CUSTOMER: "CUSTOMER",
-// }
  const useRedirect = () => {
     const navigate = useNavigate();
     const user = localStorage.getItem("user")
@@ -52,23 +46,18 @@ import { PATH, roles } from "../consts";
     const Redirect = () => {
         switch (userRole) {
             case roles.ADMIN:
-                if (!path.includes(roles.ADMIN || PATH.ADMIN_LOGIN)) {
+                if (!path.includes(roles.ADMIN.toLowerCase() || PATH.LOGIN || PATH.REGISTER)) {
                     navigate(PATH.ADMIN_HOME)
                 }
                 break;
-            case roles:
-                if (!path.includes(roles.STAFF || PATH.STAFF_LOGIN)) {
-                    navigate(PATH.STAFF_LOGIN);
+            case roles.STAFF:
+                if (!path.includes(roles.STAFF.toLowerCase() || PATH.LOGIN || PATH.REGISTER)) {
+                    navigate(PATH.STAFF);
                 }
                 break
             case roles.CUSTOMER:
-                if (!path.includes(roles.CUSTOMER || PATH.LOGIN)) {
+                if (path.includes(roles.STAFF.toLowerCase()|| roles.ADMIN.toLowerCase() || PATH.LOGIN || PATH.REGISTER)) {
                     navigate(PATH.HOME);
-                }
-                break;
-                case roles.MANAGER:
-                if (!path.includes(roles.MANAGER || PATH.MANAGER_LOGIN)) {
-                    navigate(PATH.MANAGER_LOGIN)
                 }
                 break;
             default:

@@ -116,6 +116,9 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
         setImageUrls((prev) => prev.filter((imageUrl) => imageUrl !== url));
     };
 
+    const handleRemoveThumnail = () => {
+        setThumbnailUrl(null);
+    };
     return (
         <Modal
             title={initialData ? "Update Artwork" : "Create Artwork"}
@@ -157,7 +160,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                         onPreview={(file) => window.open(file.url, "_blank")}
                         showUploadList={{ showRemoveIcon: true }}
                         multiple={false}
-                        onRemove={handleRemoveImage}
+                        onRemove={handleRemoveThumnail}
                     >
                         {!thumbnailUrl && (
                             <div className="flex flex-col items-center">
