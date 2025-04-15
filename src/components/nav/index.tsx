@@ -107,7 +107,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <MoonOutlined />
           <Link to={"/customer/manage-artworks"} >
-            Atwork
+            Tác phẩm nghệ thuật
           </Link>
         </div>
       ),
@@ -121,7 +121,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3 py-2">
           <CommentOutlined />
           <Link to={"/customer/manage-jobs"} >
-            Job
+            Công việc
           </Link>
         </div>
       ),
@@ -168,9 +168,9 @@ const Navbar = () => {
       <Col span={8}>
         <Row>
           <Col span={6}>Explore</Col>
-          <Col span={6}><a href="/job">Jobs</a></Col>
-          <Col span={6}><a href="/customer/premium">Premium</a></Col>
-          <Col span={6}><a href="/hire-freelancers">Hire Freelancers</a></Col>
+          <Col span={6}><a href="/job">Công việc</a></Col>
+           {isLogin && <Col  span={6}><a href="/customer/premium">Premium</a></Col>}
+          <Col span={6}><a href="/hire-freelancers">Thuê Freelancers</a></Col>
         </Row>
       </Col>
       <Col span={8}>

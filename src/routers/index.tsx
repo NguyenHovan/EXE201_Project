@@ -64,8 +64,8 @@ const AppRouter = () => {
                 <Route path={PATH.ADMIN_MANAGE_CATEGORIES} element={<AdminManageCategories />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
+              {/* Staff */}
             <Route path={PATH.STAFF} element={canAccess([roles.STAFF]) ? <Dashboard /> : <Navigate to={PATH.HOME} />}>
-                <Route path={PATH.STAFF_DASHBOARD} element={<StaffDashboard />} />{/* Staff */}
                 <Route path={PATH.STAFF_MANAGE_PACKAGES} element={<StaffManagePackages />} />
                 <Route path={PATH.STAFF_CHECK_AI} element={<CheckAiArtWorks />} />
                 <Route path={PATH.STAFF_MANAGE_REPORTS} element={<ManageReports />} />

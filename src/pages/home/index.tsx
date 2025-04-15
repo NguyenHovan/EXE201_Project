@@ -6,6 +6,7 @@ import { ExclamationOutlined, SearchOutlined } from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
 import { getUserDataFromLocalStorage, IMG } from '../../consts/variable'
 import { createReportService } from '../../services/report.services'
+import { Creator } from '../atwork-detail'
 const { Title, Text } = Typography;
 
 export interface AtWork {
@@ -27,7 +28,8 @@ export interface AtWork {
     deletedBy: string | null;
     isDeleted: boolean;
     images: string[];
-    status: string
+    status: string;
+    creator: Creator
 }
 
 const Home = () => {
@@ -74,7 +76,7 @@ const Home = () => {
         const response = await getAtWorksService();
         console.log('getAtWorks: ', response)
         if (response) {
-            setAtWorks(response);
+            setAtWorks(response.filter((item)=> item.status != 'AIgenerated'));
             setFilteredAtworks(response);
         }
     }
@@ -132,7 +134,7 @@ const Home = () => {
         <div className='container mx-auto pb-10'>
             <div className='mt-20 flex items-center justify-center'>
                 <div>
-                    <p className='text-7xl font-thin m-0'>"God is a design"</p>
+                    <p className='text-7xl font-thin m-0'>"Tác phẩm nghệ thuật"</p>
                     <p className='text-center mt-2'>Thiết kế là nghệ thuật, portfolio là câu chuyện</p>
                 </div>
             </div>

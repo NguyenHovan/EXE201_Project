@@ -59,7 +59,7 @@ const RegisterPremiumPage = () => {
               userProfile={profile}
               packageId={'f5df7093-f19f-437c-6045-08dd79d8e6cd'}
               price={40000}
-              month={1}
+              month={6}
               description='Lựa chọn linh hoạt, có thể hủy bất cứ lúc nào.'
               interest={[
                 'Cho phép đổi màu BG của profile',
@@ -77,7 +77,7 @@ const RegisterPremiumPage = () => {
               userProfile={profile}
               packageId={'90c4f47e-b861-4912-6046-08dd79d8e6cd'}
               price={70000}
-              month={1}
+              month={12}
               description='Lựa chọn linh hoạt, có thể hủy bất cứ lúc nào.'
               interest={[
                 'Cho phép đổi màu BG của profile',

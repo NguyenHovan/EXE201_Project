@@ -305,8 +305,8 @@ const ManageUser = () => {
                         style={{ width: 140 }}
                         onChange={handleChangeRole}
                         options={[
-                            { value: 2, label: "Role: Customer" },
-                            { value: 1, label: "Role: Admin" },
+                            { value: 'Customer', label: "Role: Customer" },
+                            { value: 'Staff', label: "Role: Staff" },
                             { value: "", label: "Role: All" },
                         ]}
                     />

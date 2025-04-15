@@ -80,7 +80,7 @@ const RegisterPage: React.FC = () => {
                         <div className="p-6 space-y-4 w-full sm:p-8">
                             <Form className="space-y-4 md:space-y-6 w-full" onFinish={handleSubmit}>
                                 <div>
-                                    <label className="block mb-2 text-center font-bold text-xl ">Create an account</label>
+                                    <label className="block mb-2 text-center font-bold text-xl ">Tạo tài khoản</label>
                                 </div>
 
                                 {/* First Name and Last Name */}
@@ -106,9 +106,9 @@ const RegisterPage: React.FC = () => {
                                             value={formData.gender}
                                             onChange={(value) => handleChange('gender', value)}
                                         >
-                                            <Option value={0}>Select Gender</Option>
-                                            <Option value={1}>Male</Option>
-                                            <Option value={2}>Female</Option>
+                                            <Option value={0}>Chọn giới tính</Option>
+                                            <Option value={1}>Nam</Option>
+                                            <Option value={2}>Nữ</Option>
                                         </Select>
                                     </Form.Item>
                                     <Form.Item
@@ -157,11 +157,11 @@ const RegisterPage: React.FC = () => {
 
                                 <div className="text-center">
                                     <div>
-                                        <p>By continuing, you agree to our <span className='text-purple-900'>terms of service.</span></p>
+                                        <p>Bằng cách tiếp tục, bạn đồng ý với các điều khoản dịch vụ của chúng tôi<span className='text-purple-900'></span></p>
                                     </div>
-                                    <Button type="primary" htmlType="submit" className="w-[250px] bg-purple-600">Sign up</Button>
+                                    <Button type="primary" htmlType="submit" className="w-[250px] bg-purple-600">Đăng ký</Button>
                                     <div>
-                                        <div className=' text-center py-3' >or sign up with</div>
+                                        <div className=' text-center py-3' >hoặc Đăng nhập với</div>
                                     </div>
                                     <div className='justify-items-center'>
                                         <Button className="w-[250px] pt-1 grid grid-cols-12 bg-white dark:bg-gray-900 pb-5 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
@@ -213,13 +213,13 @@ const RegisterPage: React.FC = () => {
                                                 </svg>
                                             </div>
                                             <div className='col-span-10'>
-                                                <span>Continue with Google</span>
+                                                <span>Tiếp tục với Google</span>
                                             </div>
                                         </Button>
                                     </div>
                                 </div>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                          Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Sign in here</a>
+                                Bạn đã có tài khoản? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Đăng nhập ở đây</a>
                                 </p>
                             </Form>
                         </div>

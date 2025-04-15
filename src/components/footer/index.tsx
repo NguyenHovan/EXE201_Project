@@ -75,16 +75,7 @@ const FooterComponent: React.FC = () => {
           <h3 className="font-bold text-lg mb-4">Download App</h3>
           <p className="text-sm mb-4">Save $3 with App New User Only</p>
           <div className="flex space-x-4">
-            <img
-              src="https://via.placeholder.com/100x40?text=Google+Play"
-              alt="Google Play"
-              className="h-10"
-            />
-            <img
-              src="https://via.placeholder.com/100x40?text=App+Store"
-              alt="App Store"
-              className="h-10"
-            />
+
           </div>
           <div className="flex space-x-4 mt-4 text-white">
             <a href="#" className="text-xl">

@@ -35,7 +35,7 @@ axiosInstance.interceptors.request.use(
     },
     (error) => {
       console.log("axiosInstance: ", error.response.data)
-      message.error(error.response.data?.message)
+      message.error(error.response.data?.message || error.response.data)
       if (error.response && error.response.status === 401) {
         return console.log("401 - Unauthorized")
       } else if (error.response && error.response.status === 403) {

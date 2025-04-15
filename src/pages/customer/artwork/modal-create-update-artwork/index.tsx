@@ -16,7 +16,7 @@ export interface ArtworkData {
     categoryIds: string[];
     categories?: string[];
     artWorkId?: string;
-    id?:string,
+    id?: string,
     status: number
 }
 
@@ -61,7 +61,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
             }
             onSubmit(valuesSubmit);
 
-        }else if(user && user?.userId && artWorkId && thumbnailUrl && imageUrls){
+        } else if (user && user?.userId && artWorkId && thumbnailUrl && imageUrls) {
             const valuesSubmit = {
                 ...values,
                 creatorId: user?.userId,
@@ -121,7 +121,7 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
     };
     return (
         <Modal
-            title={initialData ? "Update Artwork" : "Create Artwork"}
+            title={initialData ? "Cập nhật tác phẩm nghệ thuật" : "Tạo tác phẩm nghệ thuật"}
             visible={open}
             onCancel={onClose}
             footer={null}
@@ -130,28 +130,27 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                 form={form}
                 layout="vertical"
                 onFinish={handleFinish}
-                
             >
                 <Form.Item
-                    label="Title"
+                    label="Tiêu đề"
                     name="title"
-                    rules={[{ required: true, message: 'Please input the title!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập tiêu đề!' }]}
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item
-                    label="Description"
+                    label="Mô tả"
                     name="description"
-                    rules={[{ required: true, message: 'Please input the description!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập mô tả!' }]}
                 >
                     <Input.TextArea rows={4} />
                 </Form.Item>
 
                 <Form.Item
-                    label="Thumbnail URL"
+                    label="Ảnh thu nhỏ"
                     name="thumbnailUrl"
-                    rules={[{ required: true, message: 'Please upload the thumbnail!' }]}
+                    rules={[{ required: true, message: 'Vui lòng tải lên ảnh thu nhỏ!' }]}
                 >
                     <Upload
                         listType="picture-card"
@@ -165,32 +164,24 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                         {!thumbnailUrl && (
                             <div className="flex flex-col items-center">
                                 <PlusOutlined className="text-xl" />
-                                <div style={{ marginTop: 8 }}>Upload Thumbnail</div>
+                                <div style={{ marginTop: 8 }}>Tải lên ảnh thu nhỏ</div>
                             </div>
                         )}
                     </Upload>
                 </Form.Item>
 
                 <Form.Item
-                    label="Price"
+                    label="Giá"
                     name="price"
-                    rules={[{ required: true, message: 'Please input the price!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập giá!' }]}
                 >
                     <InputNumber min={0} style={{ width: '100%' }} />
                 </Form.Item>
-                {/* 
-                <Form.Item
-                    label="Creator ID"
-                    name="creatorId"
-                    rules={[{ required: true, message: 'Please input the creator ID!' }]}
-                >
-                    <Input />
-                </Form.Item> */}
 
                 <Form.Item
-                    label="Image URLs"
+                    label="Ảnh chi tiết"
                     name="imageUrls"
-                    rules={[{ required: true, message: 'Please upload at least one image!' }]}
+                    rules={[{ required: true, message: 'Vui lòng tải lên ít nhất một ảnh!' }]}
                 >
                     <Upload
                         listType="picture-card"
@@ -203,29 +194,30 @@ const ModalCreateUpdateArtwork: React.FC<ArtworkModalProps> = ({ open, onClose, 
                     >
                         <div className="flex flex-col items-center">
                             <PlusOutlined className="text-xl" />
-                            <div style={{ marginTop: 8 }}>Upload Images</div>
+                            <div style={{ marginTop: 8 }}>Tải lên ảnh</div>
                         </div>
                     </Upload>
                 </Form.Item>
 
                 <Form.Item
-                    label="Category"
+                    label="Danh mục"
                     name="categoryIds"
-                    rules={[{ required: true, message: 'Please select at least one category!' }]}
+                    rules={[{ required: true, message: 'Vui lòng chọn ít nhất một danh mục!' }]}
                 >
                     <Select
                         mode="multiple"
-                        placeholder="Select categories"
+                        placeholder="Chọn danh mục"
                         options={categories.map(category => ({ label: category.name, value: category.id }))}
                     />
                 </Form.Item>
 
                 <Form.Item>
                     <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-                        {initialData ? "Update Artwork" : "Create Artwork"}
+                        {initialData ? "Cập nhật tác phẩm" : "Tạo tác phẩm"}
                     </Button>
                 </Form.Item>
             </Form>
+
         </Modal>
     );
 };

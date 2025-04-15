@@ -65,12 +65,12 @@ const ManageFreelancerServices = () => {
 
     const columns = [
         {
-            title: 'Service Name',
+            title: 'Tên Dịch Vụ',
             dataIndex: 'servicename',
             key: 'servicename',
         },
         {
-            title: 'Image',
+            title: 'Hình Ảnh',
             render: (text: string, record: Service) => (
                 <div>
                     <Image style={{ width: "100px" }} className='w-[100px] h-[50px] object-cover object-left-top' src={record.imageUrl} alt={text} />
@@ -78,12 +78,12 @@ const ManageFreelancerServices = () => {
             ),
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: 'price',
             key: 'price',
         },
         {
-            title: 'Description',
+            title: 'Mô Tả',
             dataIndex: 'description',
             key: 'description',
             render: (text: string) => (
@@ -91,7 +91,7 @@ const ManageFreelancerServices = () => {
             ),
         },
         {
-            title: 'Action',
+            title: 'Hành Động',
             render: (record: Service) => (
                 <div className="text-lg flex gap-10">
                     <Link to={`/customer/edit-service/${record.id}`}>

@@ -30,14 +30,13 @@ interface CommentType {
     isDeleted: boolean
 }
 
-// Define the payload for adding a new comment
-interface CommentPayload {
-    accountId: string
-    ratingId?: string
-    commentText: string
-    parentCommentId?: string
+export interface Creator {
+    avatarUrl: string;
+    firstName: string;
+    phoneNumber: string;
+    id: string;
+    lastName: string;
 }
-
 const { TextArea } = Input
 
 const AtWorkDetail = () => {
@@ -160,12 +159,12 @@ const AtWorkDetail = () => {
                 renderItem={(reply) => (
                     <Comment
                         author={<a>{reply.customerName}</a>}
-                        avatar={<Avatar icon={<UserOutlined />} />}
+                        avatar={<Avatar src={reply.avatarUrl} icon={<UserOutlined />} />}
                         content={<p>{reply?.commentText}</p>}
                         datetime={
                             <Tooltip title={moment(reply.creationDate).add(7, 'hours').format("YYYY-MM-DD HH:mm:ss")}>
-                            <span>{moment(reply.creationDate).add(7, 'hours').fromNow()}</span>
-                        </Tooltip>                          
+                                <span>{moment(reply.creationDate).add(7, 'hours').fromNow()}</span>
+                            </Tooltip>
                         }
                         actions={user && [
                             <div className="flex gap-2">
@@ -217,8 +216,24 @@ const AtWorkDetail = () => {
                 </div>
                 <div className="col-span-5">
                     <div className="text-3xl font-semibold">{atwork?.title}</div>
+
+                    {/* Author Information */}
+                    <div className="flex items-center mt-4">
+                        <div className="flex-shrink-0">
+                            <img
+                                src="https://res.cloudinary.com/dqnxnuqv5/image/upload/v1744473968/gpy5dkxkmykxxlpxyeyh.jpg"
+                                alt="Thanh Dung"
+                                className="w-12 h-12 rounded-full object-cover border-2 border-purple-200"
+                            />
+                        </div>
+                        <div className="ml-3">
+                            <div className="text-sm text-gray-500">Tác giả</div>
+                            <div className="font-medium">{atwork?.creator.firstName} {atwork?.creator.lastName}</div>
+                        </div>
+                    </div>
+
                     <div className="mt-5">{atwork?.description}</div>
-                    <div className="mt-5">{priceUnit(atwork?.price || 0)}</div>
+                    <div className="mt-5 text-xl font-semibold text-purple-600">{priceUnit(atwork?.price || 0)}</div>
                 </div>
             </div>
 
@@ -276,7 +291,7 @@ const AtWorkDetail = () => {
                             <li>
                                 <Comment
                                     author={<a>{comment.customerName}</a>}
-                                    avatar={<Avatar icon={<UserOutlined />} />}
+                                    avatar={<Avatar src={comment.avatarUrl} icon={<UserOutlined />} />}
                                     content={<p>{comment.comments}</p>}
                                     datetime={
                                         <Tooltip title={moment(comment.creationDate).add(7, 'hours').format("YYYY-MM-DD HH:mm:ss")}>

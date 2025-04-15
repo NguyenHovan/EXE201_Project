@@ -8,19 +8,19 @@ import { NewService } from '../customer/freelancer-service/add-new-service';
 const { Title, Paragraph } = Typography;
 
 const HireFreelancerDetail = () => {
-     const [service, setService] = useState<NewService>();
-     const { id } = useParams();
+    const [service, setService] = useState<NewService>();
+    const { id } = useParams();
 
-       useEffect(() => {
-            getServicebyClient();
-        }, [id]);
-    
-        const getServicebyClient = async () => {
-            if (id) {
-                const response = await getService(id);
-                setService(response);
-            }
-        };
+    useEffect(() => {
+        getServicebyClient();
+    }, [id]);
+
+    const getServicebyClient = async () => {
+        if (id) {
+            const response = await getService(id);
+            setService(response);
+        }
+    };
 
     return (
         <div className='container mx-auto justify-items-center mt-10 mb-10'>
@@ -32,16 +32,20 @@ const HireFreelancerDetail = () => {
                 <div>
                     <Title level={3}>{service?.servicename}</Title>
                     <Paragraph>{service?.description}</Paragraph>
-                    <Title level={4}>Price: {priceUnit(service?.price || 0)}</Title>
+                    <Title level={4}>Giá: {priceUnit(service?.price || 0)}</Title>
                     <Paragraph>
-                        <strong>Delivery Time:</strong> {service?.deliveryTime} days
+                        <strong>Thời gian giao hàng:</strong> {service?.deliveryTime} ngày
                     </Paragraph>
                     <Paragraph>
-                        <strong>Number of Concepts:</strong> {service?.numConcepts}
+                        <strong>Số lượng ý tưởng:</strong> {service?.numConcepts}
                     </Paragraph>
                     <Paragraph>
-                        <strong>Number of Revisions:</strong> {service?.numRevisions}
+                        <strong>Số lần chỉnh sửa:</strong> {service?.numRevisions}
                     </Paragraph>
+                    <Paragraph>
+                        <strong>Thông tin liên hệ:</strong> {service?.contactInformation}
+                    </Paragraph>
+
                 </div>
             </div>
         </div>

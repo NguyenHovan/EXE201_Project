@@ -32,7 +32,7 @@ const LoginPage = () => {
                     navigate('/admin')
                 }
                 else if (decodedToken?.role === 'Staff') {
-                    navigate('/staff')
+                    navigate('/staff/manage-packages')
                 }
                 window.location.reload()
                 localStorage.setItem("token", response.data.accessToken)
@@ -85,7 +85,7 @@ const LoginPage = () => {
                                 </Form.Item>
 
                                 <Form.Item name="remember" valuePropName="checked">
-                                    <Checkbox>Keep me signed in</Checkbox>
+                                    <Checkbox>Ghi nhớ đăng nhập</Checkbox>
                                 </Form.Item>
 
                                 <Form.Item>
@@ -98,7 +98,7 @@ const LoginPage = () => {
                             <form className="space-y-4 md:space-y-6" action="#">
 
 
-                                <button disabled className="w-full text-center" type="button">or sign up with</button>
+                                <button disabled className="w-full text-center" type="button">hoặc đăng ký với</button>
                                 <button className="w-full flex items-center justify-center bg-white dark:bg-gray-900 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                     <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="-0.5 0 48 48" version="1.1">
                                         <title>Google-color</title>
@@ -113,10 +113,10 @@ const LoginPage = () => {
                                             </g>
                                         </g>
                                     </svg>
-                                    <span>Continue with Google</span>
+                                    <span>Tiếp tục với Google</span>
                                 </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Don’t have an account yet? <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Sign up</a>
+                                    Bạn chưa có tài khoản? <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-purple-900">Đăng ký</a>
                                 </p>
                             </form>
                         </div>

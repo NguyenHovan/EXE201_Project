@@ -25,7 +25,7 @@ const CustomerManageJob = () => {
         if (response) {
             console.log("getJobs: ", response);
             const sortedJobs = response.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
-            setJobs(sortedJobs);
+            setJobs(response);
         }
     };
 
@@ -52,7 +52,7 @@ const CustomerManageJob = () => {
     const handleUpdateJob = async (data: JobDataProps) => {
         // Implement the logic to update the job
         // After updating, refresh the job list
-        const response = await updateJobService(data, currentJob?.id+"")
+        const response = await updateJobService(data, currentJob?.id + "")
         if (response) {
             getJobs();
             setIsModalOpen(false);
@@ -68,54 +68,57 @@ const CustomerManageJob = () => {
         if (response) {
             message.success("Xoá job thành công!");
             getJobs(); // Refresh the job list
-        } 
+        }
     };
 
     const columns = [
         {
-            title: 'Project Title',
+            title: 'Tiêu đề dự án',
             dataIndex: 'projectTitle',
             key: 'projectTitle',
         },
         {
-            title: 'File Attachment',
+            title: 'Tập tin đính kèm',
             dataIndex: 'fileAttachment',
             key: 'fileAttachment',
             render: (file: string) => (
-                <a href={file} target="_blank" rel="noopener noreferrer">View File</a>
+                <a href={file} target="_blank" rel="noopener noreferrer">Xem tập tin</a>
             ),
         },
         {
-            title: 'Categories',
+            title: 'Danh mục',
             dataIndex: 'categories',
             key: 'categories',
         },
         {
-            title: 'Budget',
+            title: 'Ngân sách',
             dataIndex: 'budget',
             key: 'budget',
             render: (budget: number) => priceUnit(budget),
         },
         {
-            title: 'Location',
+            title: 'Địa điểm',
             dataIndex: 'location',
             key: 'location',
         },
         {
-            title: 'Action',
+            title: 'Thao tác',
             key: 'action',
-            render: (text: string, record: JobCardProps) => (
+            render: (_: string, record: JobCardProps) => (
                 <>
                     <Button
                         type="link"
                         icon={<EditOutlined />}
-                        onClick={() => { setCurrentJob(record); setIsModalOpen(true); }}
+                        onClick={() => {
+                            setCurrentJob(record);
+                            setIsModalOpen(true);
+                        }}
                     />
                     <Popconfirm
-                        title="Are you sure to delete this job?"
-                        onConfirm={() => handleDeleteJob(record.id)} // Assuming fileAttachment is the job ID
-                        okText="Yes"
-                        cancelText="No"
+                        title="Bạn có chắc muốn xóa công việc này?"
+                        onConfirm={() => handleDeleteJob(record.id)}
+                        okText="Có"
+                        cancelText="Không"
                     >
                         <Button type="link" icon={<DeleteOutlined />} danger />
                     </Popconfirm>
@@ -123,6 +126,7 @@ const CustomerManageJob = () => {
             ),
         },
     ];
+
 
     return (
         <div className="mx-20 my-10">
@@ -134,10 +138,10 @@ const CustomerManageJob = () => {
                     initialData={currentJob}
                     categories={cates}
                 />
-                <div className="text-3xl font-bold text-center mb-4">Manage Jobs</div>
+                <div className="text-3xl font-bold text-center mb-4">Quản lý công việc</div>
                 <div className="mb-4">
                     <Button onClick={() => { setIsModalOpen(true); setCurrentJob(null); }} type="primary" icon={<PlusOutlined />}>
-                        Add Job
+                        Thêm công việc
                     </Button>
                 </div>
                 <Table

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Table, message, Select, Modal, Form } from "antd";
-import  { ArtworkData } from "../../customer/artwork/modal-create-update-artwork";
+import { ArtworkData } from "../../customer/artwork/modal-create-update-artwork";
 import { priceUnit } from "../../../consts/variable";
 import { getAtWorksService } from "../../../services/atworrk.services";
 import { staffCheckAi } from "../../../services/staff.services";
@@ -31,8 +31,8 @@ const { Option } = Select;
 
 const statusOptions = [
     { value: 0, label: 'Pending' },
-    { value: 1, label: 'Resolved' },
-    { value: 2, label: 'Rejected' },
+    { value: 1, label: 'NoAi' },
+    { value: 2, label: 'AIgenerated' },
 ];
 const CheckAiArtWork = () => {
     const [atworks, setAtWorks] = useState<AtWork[]>([]);
@@ -71,39 +71,45 @@ const CheckAiArtWork = () => {
 
     const columns = [
         {
-            title: 'Title',
+            title: 'Tiêu đề',
             dataIndex: 'title',
             key: 'title',
         },
         {
-            title: 'Status',
+            title: 'Trạng thái',
             dataIndex: 'status',
             key: 'status',
         },
         {
-            title: 'Description',
+            title: 'Mô tả',
             dataIndex: 'description',
             key: 'description',
         },
         {
-            title: 'Thumbnail',
+            title: 'Ảnh thu nhỏ',
             dataIndex: 'thumbnailUrl',
             key: 'thumbnailUrl',
-            render: (url: string) => <img src={url} alt="Thumbnail" style={{ width: 100, height: 100, objectFit: 'cover' }} />,
+            render: (url: string) => (
+                <img
+                    src={url}
+                    alt="Thumbnail"
+                    style={{ width: 100, height: 100, objectFit: 'cover' }}
+                />
+            ),
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: 'price',
             key: 'price',
             render: (price: number) => `${priceUnit(price)}`,
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (record: ArtworkData) => (
-                <>
-                    <Button type="link" onClick={() => showModal(record)}>Change status</Button>
-                </>
+                <Button type="link" onClick={() => showModal(record)}>
+                    Thay đổi trạng thái
+                </Button>
             ),
         },
     ];
@@ -118,33 +124,38 @@ const CheckAiArtWork = () => {
         <div className="mx-20 my-10">
             <div className="container mx-auto">
                 <Modal
-                    title="Update Status"
+                    title="Cập nhật trạng thái"
                     open={isModalOpen}
                     onCancel={onClose}
                     footer={null}
                 >
-                    <Form form={form} onFinish={handleSubmit} initialValues={{ status: currentArtwork?.status }}>
+                    <Form
+                        form={form}
+                        onFinish={handleSubmit}
+                        initialValues={{ status: currentArtwork?.status }}
+                    >
                         <Form.Item
                             name="status"
-                            label="Status"
-                            rules={[{ required: true, message: 'Please select a status!' }]}
+                            label="Trạng thái"
+                            rules={[{ required: true, message: 'Vui lòng chọn trạng thái!' }]}
                         >
-                            <Select placeholder="Select a status">
+                            <Select placeholder="Chọn trạng thái">
                                 {statusOptions.map(option => (
-                                    <Option key={option.value} value={option.value}>
+                                    <Select.Option key={option.value} value={option.value}>
                                         {option.label}
-                                    </Option>
+                                    </Select.Option>
                                 ))}
                             </Select>
                         </Form.Item>
+
                         <Form.Item>
                             <Button type="primary" htmlType="submit">
-                                Update
+                                Cập nhật
                             </Button>
                         </Form.Item>
                     </Form>
                 </Modal>
-                <div className="text-3xl font-bold text-center mb-4">Manage Artwork</div>
+                <div className="text-3xl font-bold text-center mb-4">Quản lý tác phẩm nghệ thuật</div>
                 <Table
                     dataSource={atworks}
                     columns={columns}

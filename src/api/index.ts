@@ -53,7 +53,7 @@ export const API = {
     RETURN_PAYMENT: "/api/payment/return",
     //PACKAGES
     CREATE_REPORT: "/api/Report",
-    STAFF_GET_REPORTS: "/api/Report",
+    STAFF_GET_REPORTS: "/api/Report?includeDeleted=false",
     STAFF_CHANGE_STATUS_REPORT: "/api/Report",
     //RATING
     GET_RATINGS: "/api/v1/ratings",

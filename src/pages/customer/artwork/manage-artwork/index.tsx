@@ -44,7 +44,7 @@ const ManageArtwork = () => {
             const artworksFilter = sortedAtWorks.filter(item => item.createdBy === user?.userId)
             setAtWorks(artworksFilter);
         }
-        
+
     };
     const getCate = async () => {
         const response = await getCategoriesService();
@@ -56,11 +56,11 @@ const ManageArtwork = () => {
     const handleAddArtwork = async (data: ArtworkData) => {
         const response = await createArtworkService(data);
         if (response) {
-            message.success("Artwork added successfully");
+            message.success("Đã thêm tác phẩm nghệ thuật thành công");
             getAtWorks(); // Refresh the list
             setIsModalOpen(false);
         } else {
-            message.error("Failed to add artwork");
+            message.error("Không thêm được tác phẩm nghệ thuật");
         }
     };
 
@@ -69,12 +69,12 @@ const ManageArtwork = () => {
             console.log("currentArtwork: ", currentArtwork)
             const response = await updateArtworkService(currentArtwork?.id + "", data);
             if (response) {
-                message.success("Artwork updated successfully");
+                message.success("Tác phẩm nghệ thuật được cập nhật thành công");
                 getAtWorks(); // Refresh the list
                 setIsModalOpen(false);
                 setCurrentArtwork(null);
             } else {
-                message.error("Failed to update artwork");
+                message.error("Không cập nhật được tác phẩm nghệ thuật");
             }
         }
     };
@@ -82,56 +82,67 @@ const ManageArtwork = () => {
     const handleDeleteArtwork = async (id: string) => {
         const response = await deleteArtworkService(id);
         if (response) {
-            message.success("Artwork deleted successfully");
+            message.success("Tác phẩm nghệ thuật đã được xóa thành công");
             getAtWorks(); // Refresh the list
         } else {
-            message.error("Failed to delete artwork");
+            message.error("Không thể xóa tác phẩm nghệ thuật");
         }
     };
 
     const columns = [
         {
-            title: 'Title',
+            title: 'Tiêu đề',
             dataIndex: 'title',
             key: 'title',
         },
         {
-            title: 'Description',
+            title: 'Mô tả',
             dataIndex: 'description',
             key: 'description',
         },
         {
-            title: 'Thumbnail',
+            title: 'Ảnh đại diện',
             dataIndex: 'thumbnailUrl',
             key: 'thumbnailUrl',
-            render: (url: string) => <img src={url} alt="Thumbnail" style={{ width: 100, height: 100, objectFit: 'cover' }} />,
+            render: (url: string) => (
+                <img
+                    src={url}
+                    alt="Ảnh đại diện"
+                    style={{ width: 100, height: 100, objectFit: 'cover' }}
+                />
+            ),
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: 'price',
             key: 'price',
-            render: (price: number) => `$${priceUnit(price)}`,
+            render: (price: number) => `${priceUnit(price)}`,
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
-            render: ( record: ArtworkData) => (
+            render: (record: ArtworkData) => (
                 <>
-                    <Button type="link" onClick={() => showModalUpdate(record)}>Update</Button>
+                    <Button type="link" onClick={() => showModalUpdate(record)}>
+                        Cập nhật
+                    </Button>
                     <Popconfirm
-                        title="Are you sure to delete this artwork?"
-                        onConfirm={() => handleDeleteArtwork(record?.id+"")}
-                        okText="Yes"
-                        cancelText="No"
+                        title="Bạn có chắc muốn xóa tác phẩm này không?"
+                        onConfirm={() => handleDeleteArtwork(record?.id + '')}
+                        okText="Có"
+                        cancelText="Không"
                     >
-                        <Button type="link" danger>Delete</Button>
+                        <Button type="link" danger>
+                            Xóa
+                        </Button>
                     </Popconfirm>
                 </>
             ),
         },
     ];
 
-    const showModalUpdate = (record: ArtworkData)=>{
+
+    const showModalUpdate = (record: ArtworkData) => {
         console.log("record: ", record)
         setCurrentArtwork(record);
         setIsModalOpen(true);
@@ -140,15 +151,15 @@ const ManageArtwork = () => {
         <div className="mx-20 my-10">
             <div className="container mx-auto">
                 <ModalCreateUpdateArtwork
-                categories={cates}
+                    categories={cates}
                     open={isModalOpen}
                     onClose={() => { setIsModalOpen(false); setCurrentArtwork(null); }}
                     onSubmit={currentArtwork ? handleUpdateArtwork : handleAddArtwork}
                     initialData={currentArtwork || null}
                 />
-                <div className="text-3xl font-bold text-center mb-4">Manage Artwork</div>
+                <div className="text-3xl font-bold text-center mb-4">Quản lý tác phẩm</div>
                 <div className="mb-4">
-                    <Button onClick={() => { setIsModalOpen(true); setCurrentArtwork(null); }} type="primary">Add Artwork</Button>
+                    <Button onClick={() => { setIsModalOpen(true); setCurrentArtwork(null); }} type="primary">Thêm tác phẩm</Button>
                 </div>
                 <Table
                     dataSource={atworks}

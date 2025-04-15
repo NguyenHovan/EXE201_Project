@@ -26,10 +26,12 @@ export interface DashboardData {
     artworkCountByStatus: {
         [key: string]: number
     }
-    transactionCount: number
+    transactionCount: number,
+    successTransactionCount: number,
     jobCount: number
     portfolioCount: number
     freelancerServiceCount: number
+    proPackagePurchaseCount: number
 }
 
 const Dashboard: React.FC = () => {
@@ -65,9 +67,9 @@ const Dashboard: React.FC = () => {
 
 
     // Calculate percentage for each status
-    const calculatePercentage = (count: number) => {
+    const calculatePercentage = (count: number, totalCount: number) => {
         if (!data || data.totalArtworkCount === 0) return 0
-        return Math.round((count / data.totalArtworkCount) * 100)
+        return Math.round((count / totalCount) * 100)
     }
 
     if (loading) {
@@ -84,7 +86,7 @@ const Dashboard: React.FC = () => {
                 <Title level={2} className="m-0">
                     Tổng Quan Hệ Thống
                 </Title>
-                <Space>
+                {/* <Space>
                     <Segmented
                         options={[
                             { label: "Tuần này", value: "week" },
@@ -95,7 +97,7 @@ const Dashboard: React.FC = () => {
                         onChange={(value) => setTimeRange(value as string)}
                     />
                     <RangePicker placeholder={["Từ ngày", "Đến ngày"]} className="ml-4" format="DD/MM/YYYY" />
-                </Space>
+                </Space> */}
             </div>
 
             {/* Summary Cards */}
@@ -143,8 +145,8 @@ const Dashboard: React.FC = () => {
                 <Col xs={24} sm={12} md={6}>
                     <Card bordered={false} className="h-full shadow-sm hover:shadow-md transition-shadow">
                         <Statistic
-                            title={<Text strong>Giao Dịch</Text>}
-                            value={data?.transactionCount}
+                            title={<Text strong>Giao Dịch thành công</Text>}
+                            value={data?.successTransactionCount}
                             prefix={<ShoppingOutlined className="mr-2 text-orange-500" />}
                             valueStyle={{ color: "#3f8600" }}
                         />
@@ -185,7 +187,7 @@ const Dashboard: React.FC = () => {
                 {/* Status Breakdown */}
                 <Col xs={24} lg={12}>
                     <Card
-                        title={<Title level={4}>Chi Tiết Trạng Thái</Title>}
+                        title={<Title level={4}>Chi Tiết Trạng Thái Tác Phẩm Nghệ Thuật</Title>}
                         bordered={false}
                         className="shadow-sm hover:shadow-md transition-shadow"
                     >
@@ -196,11 +198,37 @@ const Dashboard: React.FC = () => {
                                         <div className="flex justify-between mb-1">
                                             <Text strong>{status}</Text>
                                             <Text>
-                                                {count}/{data.totalArtworkCount} ({calculatePercentage(count)}%)
+                                                {count}/{data.totalArtworkCount} ({calculatePercentage(count, data.totalArtworkCount)}%)
                                             </Text>
                                         </div>
                                         <Progress
-                                            percent={calculatePercentage(count)}
+                                            percent={calculatePercentage(count, data.totalArtworkCount)}
+                                            showInfo={false}
+                                            strokeColor={status === "Pending" ? "#faad14" : "#52c41a"}
+                                        />
+                                    </div>
+                                ))}
+                        </div>
+                    </Card>
+                </Col>
+                <Col xs={24} lg={12}>
+                    <Card
+                        title={<Title level={4}>Chi Tiết Các Gói Đã Bán</Title>}
+                        bordered={false}
+                        className="shadow-sm hover:shadow-md transition-shadow"
+                    >
+                        <div className="space-y-4">
+                            {data &&
+                                Object.entries(data.proPackagePurchaseCount).map(([status, count]) => (
+                                    <div key={status}>
+                                        <div className="flex justify-between mb-1">
+                                            <Text strong>{status}</Text>
+                                            <Text>
+                                                {count}/{data.successTransactionCount} ({calculatePercentage(count, data.successTransactionCount)}%)
+                                            </Text>
+                                        </div>
+                                        <Progress
+                                            percent={calculatePercentage(count, data.successTransactionCount)}
                                             showInfo={false}
                                             strokeColor={status === "Pending" ? "#faad14" : "#52c41a"}
                                         />

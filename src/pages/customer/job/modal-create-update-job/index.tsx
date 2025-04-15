@@ -29,7 +29,7 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
     const [form] = Form.useForm();
     const [fileUrl, setFileUrl] = useState<string | null>(null); // Change to a single URL
     const user = getUserDataFromLocalStorage()
-    
+
     useEffect(() => {
         if (initialData) {
             form.setFieldsValue(initialData);
@@ -40,10 +40,10 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
     }, [initialData, form]);
 
     const handleFinish = (values: JobDataProps) => {
-        const valuesSubmit={
+        const valuesSubmit = {
             ...values,
             fileAttachment: fileUrl,
-            userId: user?.userId+''
+            userId: user?.userId + ''
         }
         onSubmit(valuesSubmit);
     };
@@ -54,24 +54,24 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
     // Xử lý upload ảnh
     const handleUpload = async ({ file, onSuccess, onError }: any) => {
         try {
-            message.loading({ content: "Uploading...", key: "upload" });
+            message.loading({ content: "Đang tải lên...", key: "upload" });
             const url = await uploadToCloudinary(file);
             if (url) {
                 setFileUrl(url); // Set the single image URL
-                message.success({ content: "Upload thành công!", key: "upload" });
+                message.success({ content: "Tải lên thành công!", key: "upload" });
                 onSuccess("ok");
             } else {
-                message.error({ content: "Upload thất bại!", key: "upload" });
-                onError(new Error("Upload failed"));
+                message.error({ content: "Tải lên thất bại!", key: "upload" });
+                onError(new Error("Tải lên failed"));
             }
         } catch (error) {
-            message.error("Đã xảy ra lỗi khi upload!");
+            message.error("Đã xảy ra lỗi khi tải lên!");
             onError(error);
         }
     };
     return (
         <Modal
-            title={initialData ? "Update Job" : "Create Job"}
+            title={initialData ? "Cập Nhật Công Việc" : "Tạo Công Việc"}
             visible={open}
             onCancel={onClose}
             footer={null}
@@ -82,60 +82,60 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
                 onFinish={handleFinish}
             >
                 <Form.Item
-                    label="Project Title"
+                    label="Tiêu Đề Dự Án"
                     name="projectTitle"
-                    rules={[{ required: true, message: 'Please input the project title!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập tiêu đề dự án!' }]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label="Time Frame"
+                    label="Thời Gian"
                     name="timeFrame"
-                    rules={[{ required: true, message: 'Please input your time frame!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập thời gian của bạn!' }]}
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
                 <Form.Item
-                    label="Category"
+                    label="Danh Mục"
                     name="categories"
-                    rules={[{ required: true, message: 'Please select at least one category!' }]}
+                    rules={[{ required: true, message: 'Vui lòng chọn ít nhất một danh mục!' }]}
                 >
                     <Select
-                        placeholder="Select categories"
-                        options={categories.map(category => ({ label: category.name, value: category.id }))}
+                        placeholder="Chọn danh mục"
+                        options={categories.map(category => ({ label: category.name, value: category.name }))}
                     />
                 </Form.Item>
                 <Form.Item
-                    label="Budget"
+                    label="Ngân Sách"
                     name="budget"
-                    rules={[{ required: true, message: 'Please input the budget!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập ngân sách!' }]}
                 >
                     <InputNumber min={0} style={{ width: '100%' }} />
                 </Form.Item>
 
                 <Form.Item
-                    label="Location"
+                    label="Địa Điểm"
                     name="location"
-                    rules={[{ required: true, message: 'Please input the location!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập địa điểm!' }]}
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item
-                    label="File Attachment"
+                    label="Tệp Đính Kèm"
                     name="fileAttachment"
-                    rules={[{ required: true, message: 'Please input the file attachment URL!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập URL tệp đính kèm!' }]}
                 >
                     <Upload
                         listType="picture-card"
                         customRequest={handleUpload}
-                        fileList={fileUrl ? [{ uid: fileUrl, url: fileUrl }] : []} // Show single image
+                        fileList={fileUrl ? [{ uid: fileUrl, url: fileUrl }] : []} // Hiển thị hình ảnh đơn
                         onPreview={(file) => window.open(file.url, "_blank")}
                         showUploadList={{ showRemoveIcon: true }}
-                        multiple={false} // Only allow single upload
+                        multiple={false} // Chỉ cho phép tải lên một hình ảnh
                         onRemove={handleRemove}
                     >
-                        {!fileUrl && ( // Show upload button only if no image is uploaded
+                        {!fileUrl && ( // Hiển thị nút tải lên chỉ khi chưa có hình ảnh nào được tải lên
                             <div className="flex flex-col items-center">
                                 <PlusOutlined className="text-xl" />
                                 <div style={{ marginTop: 8 }}>Thêm ảnh</div>
@@ -145,23 +145,23 @@ const JobModal: React.FC<JobModalProps> = ({ open, onClose, onSubmit, initialDat
                 </Form.Item>
 
                 <Form.Item
-                    label="Personal Information"
+                    label="Thông Tin Cá Nhân"
                     name="personalInformation"
-                    rules={[{ required: true, message: 'Please input your personal information!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập thông tin cá nhân của bạn!' }]}
                 >
                     <Input.TextArea rows={4} />
                 </Form.Item>
                 <Form.Item
-                    label="Description"
+                    label="Mô Tả"
                     name="description"
-                    rules={[{ required: true, message: 'Please input your description!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập mô tả của bạn!' }]}
                 >
                     <Input.TextArea rows={4} />
                 </Form.Item>
 
                 <Form.Item>
                     <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-                        {initialData ? "Update Job" : "Create Job"}
+                        {initialData ? "Cập Nhật Công Việc" : "Tạo Công Việc"}
                     </Button>
                 </Form.Item>
             </Form>

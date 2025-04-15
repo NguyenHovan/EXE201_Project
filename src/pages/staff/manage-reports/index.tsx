@@ -67,7 +67,7 @@ const ManageReports = () => {
             setSelectedStatus(0); // Reset to default
             getReporters(); // Refresh the report list
         } else {
-            message.warning("Please select a status!");
+            message.warning("Vui lòng chọn một trạng thái!");
         }
     };
 
@@ -79,23 +79,23 @@ const ManageReports = () => {
 
     const columns: ColumnsType<ReportData> = [
         {
-            title: 'Artwork Title',
+            title: 'Tên tác phẩm',
             dataIndex: ['artwork', 'title'],
             key: 'artworkTitle',
         },
         {
-            title: 'Artwork Description',
+            title: 'Mô tả tác phẩm',
             dataIndex: ['artwork', 'description'],
             key: 'artworkDesc',
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: ['artwork', 'price'],
             key: 'price',
             render: (price: number) => `${priceUnit(price)}`,
         },
         {
-            title: 'Reporter',
+            title: 'Người báo cáo',
             key: 'reporterName',
             render: (_, record) =>
                 `${record.reporter.firstName} ${record.reporter.lastName}`,
@@ -106,20 +106,34 @@ const ManageReports = () => {
             key: 'email',
         },
         {
-            title: 'Phone',
+            title: 'Số điện thoại',
             dataIndex: ['reporter', 'phoneNumber'],
             key: 'phone',
         },
         {
-            title: 'Status',
+            title: 'Trạng thái',
             dataIndex: 'status',
             key: 'status',
             render: (status: string) => (
-                <Tag color={status === 'Resolved' ? 'green' : status === 'Pending'? 'orange' : 'red'}>{status}</Tag>
+                <Tag
+                    color={
+                        status === 'Resolved'
+                            ? 'green'
+                            : status === 'Pending'
+                            ? 'orange'
+                            : 'red'
+                    }
+                >
+                    {status === 'Resolved'
+                        ? 'Đã xử lý'
+                        : status === 'Pending'
+                        ? 'Đang chờ'
+                        : 'Bị từ chối'}
+                </Tag>
             ),
         },
         {
-            title: 'Creation Date',
+            title: 'Ngày tạo',
             dataIndex: 'creationDate',
             key: 'creationDate',
             render: (date: string) =>
@@ -129,23 +143,24 @@ const ManageReports = () => {
                 }),
         },
         {
-            title: 'Action',
+            title: 'Thao tác',
             key: 'action',
             render: (_, record) => (
                 <Button onClick={() => handleOpenModal(record.id, record.status)} type="primary">
-                    Update Status
+                    Cập nhật trạng thái
                 </Button>
             ),
         },
     ];
+    
 
     const handleUpdateStatus = async (id: string, status: number) => {
         const response = await updateStatusReportService(id, status);
         if (response) {
-            message.success("Status updated successfully!");
+            message.success("Trạng thái được cập nhật thành công!");
             getReporters()
         } else {
-            message.error("Failed to update status.");
+            message.error("Không cập nhật được trạng thái.");
         }
     };
 
@@ -153,15 +168,15 @@ const ManageReports = () => {
         <>
             <Table columns={columns} dataSource={reports} rowKey="id" />
             <Modal
-                title="Update Report Status"
+                title="Cập nhật trạng thái báo cáo"
                 open={isModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
             >
                 <Radio.Group onChange={handleStatusChange} defaultValue={currentStatus}>
-                    <Radio value={0}>Pending</Radio>
-                    <Radio value={1}>Resolved</Radio>
-                    <Radio value={2}>Rejected</Radio>
+                    <Radio value={0}>Chưa giải quyết</Radio>
+                    <Radio value={1}>Đã giải quyết</Radio>
+                    <Radio value={2}>Từ chối</Radio>
                 </Radio.Group>
             </Modal>
         </>

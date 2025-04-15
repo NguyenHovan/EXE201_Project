@@ -30,7 +30,7 @@ const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackage
 
     return (
         <Modal
-            title={proPackage ? "Update Pro Package" : "Create Pro Package"}
+            title={proPackage ? "Cập nhật gói Pro" : "Tạo gói Pro"}
             visible={isModalOpen}
             onCancel={handleCancel}
             footer={null}
@@ -41,49 +41,51 @@ const ModalCreateUpdateProPackageDataProps: React.FC<ModalCreateUpdateProPackage
                 onFinish={handleFinish}
             >
                 <Form.Item
-                    label="Package Name"
+                    label="Tên gói"
                     name="name"
-                    rules={[{ required: true, message: 'Please input the package name!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập tên gói!' }]}
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item
-                    label="Price"
+                    label="Giá"
                     name="price"
-                    rules={[{ required: true, message: 'Please input the price!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập giá!' }]}
                 >
                     <InputNumber min={0} style={{ width: '100%' }} />
                 </Form.Item>
+
                 <Form.Item
-                    label="Features"
+                    label="Tính năng"
                     name="features"
-                    rules={[{ required: true, message: 'Please input the features!' }]}
+                    rules={[{ required: true, message: 'Vui lòng chọn tính năng!' }]}
                 >
-                     <Select
+                    <Select
                         mode="multiple"
-                        placeholder="Select categories"
+                        placeholder="Chọn các tính năng"
                         options={features.map(f => ({ label: f, value: f }))}
                     />
                 </Form.Item>
 
                 <Form.Item
-                    label="Duration"
+                    label="Thời hạn"
                     name="duration"
-                    rules={[{ required: true, message: 'Please input the duration!' }]}
+                    rules={[{ required: true, message: 'Vui lòng nhập thời hạn!' }]}
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item>
                     <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-                        {proPackage ? "Update Package" : "Create Package"}
+                        {proPackage ? "Cập nhật gói" : "Tạo gói"}
                     </Button>
                 </Form.Item>
             </Form>
+
         </Modal>
     );
 };
 
-const features =["Priority Support", "Unlimited Access", "Custom Branding"]
+const features = ["Hỗ trợ ưu tiên", "Truy cập không giới hạn", "Xây dựng thương hiệu tùy chỉnh"]
 export default ModalCreateUpdateProPackageDataProps;

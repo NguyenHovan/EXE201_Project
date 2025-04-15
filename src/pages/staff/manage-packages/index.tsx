@@ -39,56 +39,61 @@ const ManageProPackage = () => {
         // Replace this with your actual delete logic
         const response = await deletePackageService(id);
         if (response) {
-            message.success("Package deleted successfully");
+            message.success("Đã xóa gói thành công");
             setPackages(packages.filter(pkg => pkg.id !== id)); // Update the state
         } else {
-            message.error("Failed to delete package");
+            message.error("Không xóa được gói");
         }
     };
 
     const columns = [
         {
-            title: 'Name',
+            title: 'Tên gói',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: 'price',
             key: 'price',
             render: (price: number) => `${priceUnit(price)}`,
         },
         {
-            title: 'Features',
+            title: 'Tính năng',
             dataIndex: 'features',
             key: 'features',
             render: (features: string[]) => features.join(', '),
         },
         {
-            title: 'Duration',
+            title: 'Thời hạn',
             dataIndex: 'duration',
             key: 'duration',
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
-            render: ( record: ProPackage) => (
+            render: (record: ProPackage) => (
                 <div className='flex gap-2'>
-                    <EditOutlined onClick={() => showModalUpdate(record)} className='text-blue-500' />
+                    <EditOutlined
+                        onClick={() => showModalUpdate(record)}
+                        className='text-blue-500 cursor-pointer'
+                        title="Chỉnh sửa"
+                    />
                     <div>
                         <Popconfirm
-                            title="Are you sure to delete this package?"
+                            title="Bạn có chắc muốn xóa gói này không?"
                             onConfirm={() => handleDelete(record.id + "")}
-                            okText="Yes"
-                            cancelText="No"
+                            okText="Đồng ý"
+                            cancelText="Hủy"
                         >
-                            <Button type="link" icon={<DeleteOutlined />} danger />
+                            <Button type="link" icon={<DeleteOutlined />} danger title="Xóa" />
                         </Popconfirm>
                     </div>
                 </div>
             ),
         },
     ];
+    
 
     const showModalUpdate = (record: ProPackage) => {
         console.log("record: ", record)
@@ -109,16 +114,16 @@ const ManageProPackage = () => {
                 // Update existing package
                 const response = await updatePackageService(currentPackage.id + "", values); // Replace with your actual update service
                 if (response) {
-                    message.success("Package updated successfully");
+                    message.success("Đã cập nhật gói thành công");
                     setCurrentPackage(null)
                 } else {
-                    message.error("Failed to update package");
+                    message.error("Không cập nhật được gói");
                 }
             } else {
                 // Create new package
                 const response = await createPackageService(values); // Replace with your actual create service
                 if (response) {
-                    message.success("Package created successfully");
+                    message.success("Đã tạo gói thành công");
                 } else {
                     message.error("Failed to create package");
                 }
@@ -143,7 +148,7 @@ const ManageProPackage = () => {
                 handleCancel={handleCancel}
                 onSubmit={handleAddOrUpdatePackage} // Define this function in your ManageProPackage component
             />
-            <div className='text-3xl text-center mb-10 font-semibold'>Manage Pro Packages</div>
+            <div className='text-3xl text-center mb-10 font-semibold'>Quản lý gói Pro</div>
             <Table
                 dataSource={packages}
                 columns={columns}

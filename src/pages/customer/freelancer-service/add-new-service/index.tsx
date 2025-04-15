@@ -17,7 +17,8 @@ export interface NewService {
     numConcepts: number;
     numRevisions: number;
     userId: string;
-    id?:string
+    id?: string,
+    contactInformation: string
 }
 
 const AddNewService = () => {
@@ -58,18 +59,18 @@ const AddNewService = () => {
     // Xử lý upload ảnh
     const handleUpload = async ({ file, onSuccess, onError }: any) => {
         try {
-            message.loading({ content: "Uploading...", key: "upload" });
+            message.loading({ content: "Đang tải lên...", key: "upload" });
             const url = await uploadToCloudinary(file);
             if (url) {
                 setFileUrl(url); // Set the single image URL
-                message.success({ content: "Upload thành công!", key: "upload" });
+                message.success({ content: "Tải lên thành công!", key: "upload" });
                 onSuccess("ok");
             } else {
-                message.error({ content: "Upload thất bại!", key: "upload" });
-                onError(new Error("Upload failed"));
+                message.error({ content: "Tải lên thất bại!", key: "upload" });
+                onError(new Error("Tải lên thất bại!"));
             }
         } catch (error) {
-            message.error("Đã xảy ra lỗi khi upload!");
+            message.error("Đã xảy ra lỗi khi tải lên!");
             onError(error);
         }
     };
@@ -117,17 +118,17 @@ const AddNewService = () => {
                     <div className="grid grid-cols-12 gap-4">
                         {/* Upload Hình Ảnh */}
                         <div className="col-span-5">
-                            <Form.Item label="Upload Ảnh">
+                            <Form.Item label="Tải Ảnh Lên">
                                 <Upload
                                     listType="picture-card"
                                     customRequest={handleUpload}
-                                    fileList={fileUrl ? [{ uid: fileUrl, url: fileUrl }] : []} // Show single image
+                                    fileList={fileUrl ? [{ uid: fileUrl, url: fileUrl }] : []} // Hiển thị hình ảnh đơn
                                     onPreview={(file) => window.open(file.url, "_blank")}
                                     showUploadList={{ showRemoveIcon: true }}
-                                    multiple={false} // Only allow single upload
+                                    multiple={false} // Chỉ cho phép tải lên một hình ảnh
                                     onRemove={handleRemove}
                                 >
-                                    {!fileUrl && ( // Show upload button only if no image is uploaded
+                                    {!fileUrl && ( // Hiển thị nút tải lên chỉ khi chưa có hình ảnh nào được tải lên
                                         <div className="flex flex-col items-center">
                                             <PlusOutlined className="text-xl" />
                                             <div style={{ marginTop: 8 }}>Thêm ảnh</div>
@@ -139,30 +140,30 @@ const AddNewService = () => {
 
                         {/* Form Nhập Thông Tin */}
                         <div className="col-span-7">
-                            <div className="text-xl font-bold">New Service</div>
+                            <div className="text-xl font-bold">Dịch Vụ Mới</div>
                             <p className="mt-2 text-gray-600">
-                                Add a service to let potential clients know what you're available for, and help them easily book you.
+                                Thêm một dịch vụ để khách hàng tiềm năng biết bạn sẵn sàng phục vụ những gì và giúp họ dễ dàng đặt lịch với bạn.
                             </p>
-                            <Form.Item className="mt-5" label="Service Name" name="servicename">
-                                <Input placeholder="Enter service name" />
+                            <Form.Item className="mt-5" label="Tên Dịch Vụ" name="servicename">
+                                <Input placeholder="Nhập tên dịch vụ" />
                             </Form.Item>
-                            <Form.Item label="Description" name="description">
-                                <Input placeholder="Enter description" />
+                            <Form.Item label="Mô Tả" name="description">
+                                <Input placeholder="Nhập mô tả" />
                             </Form.Item>
-                            <Form.Item label="Price" name="price">
-                                <Input type="number" placeholder="Enter price" />
+                            <Form.Item label="Giá" name="price">
+                                <Input type="number" placeholder="Nhập giá" />
                             </Form.Item>
-                            <Form.Item label="Delivery Time (days)" name="deliveryTime">
-                                <Input type="number" placeholder="Enter delivery time (days)" />
+                            <Form.Item label="Thời Gian Giao Hàng (ngày)" name="deliveryTime">
+                                <Input type="number" placeholder="Nhập thời gian giao hàng (ngày)" />
                             </Form.Item>
-                            <Form.Item label="Number of Concepts" name="numConcepts">
-                                <Input type="number" placeholder="Enter number of concepts" />
+                            <Form.Item label="Số Lượng Khái Niệm" name="numConcepts">
+                                <Input type="number" placeholder="Nhập số lượng khái niệm" />
                             </Form.Item>
-                            <Form.Item label="Number of Revisions" name="numRevisions">
-                                <Input type="number" placeholder="Enter number of revisions" />
+                            <Form.Item label="Số Lượng Sửa Đổi" name="numRevisions">
+                                <Input type="number" placeholder="Nhập số lượng sửa đổi" />
                             </Form.Item>
                             {service && (
-                                <Form.Item label="Ảnh cũ">
+                                <Form.Item label="Ảnh Cũ">
                                     <div className="flex gap-2">
                                         {service.imageUrl && (
                                             <Image src={service.imageUrl} width={100} height={100} />
@@ -172,7 +173,7 @@ const AddNewService = () => {
                             )}
                             <Form.Item label={null}>
                                 <Button type="primary" htmlType="submit">
-                                    Submit
+                                    Xác Nhận
                                 </Button>
                             </Form.Item>
                         </div>

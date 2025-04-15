@@ -41,25 +41,19 @@ const Dashboard: React.FC = () => {
         const currentPath = window.location.pathname;
         if (currentPath.startsWith('/admin')) {
             setItems([
-                getItem('Dashboard', '/admin/', <DesktopOutlined />),
-                getItem('Manage Accounts', '/admin/manage-accounts', <UserOutlined />),
-                getItem('Manage Categories', '/admin/manage-categories', <UserOutlined />),
-                getItem('Manage Jobs', '/admin/manage-jobs', <UserOutlined />),
-                getItem('Manage Portfolios', '/admin/manage-portfolios', <UserOutlined />),
-                getItem('Manage Art Works', '/admin/manage-artworks', <UserOutlined />),
-                getItem('Manage Freelancer Serivces', '/admin/manage-services', <UserOutlined />),
+                getItem('Trang tổng quan', '/admin/', <DesktopOutlined />),
+                getItem('Quản lý tài khoản', '/admin/manage-accounts', <UserOutlined />),
+                getItem('Quản lý danh mục', '/admin/manage-categories', <UserOutlined />),
+                getItem('Quản lý công việc', '/admin/manage-jobs', <UserOutlined />),
+                getItem('Quản lý Portfolios', '/admin/manage-portfolios', <UserOutlined />),
+                getItem('Quản lý tác phẩm nghệ thuật', '/admin/manage-artworks', <UserOutlined />),
+                getItem('Quản lý dịch vụ Freelancer', '/admin/manage-services', <UserOutlined />),
             ]);
         }else if(currentPath.startsWith('/staff')) {
             setItems([
-                getItem('Dashboard', '/staff/', <DesktopOutlined />),
-                getItem('Manage Packages', '/staff/manage-packages', <UserOutlined />),
-                getItem('Check Ai', '/staff/check-ai-artworks', <UserOutlined />),
-                getItem('Manage Reports', '/staff/manage-reports', <UserOutlined />),
-            ]);
-        }else if(currentPath.startsWith('/doctor')) {
-            setItems([
-                getItem('Quản lý đặt lịch', '/doctor/manage-booking', <DesktopOutlined />),
-                getItem('Lịch khám trong tuần', '/doctor/schedule-of-week', <DesktopOutlined />),
+                getItem('Quản lý gói', '/staff/manage-packages', <UserOutlined />),
+                getItem('Kiểm tra Ai', '/staff/check-ai-artworks', <UserOutlined />),
+                getItem('Quản lý báo cáo', '/staff/manage-reports', <UserOutlined />),
             ]);
         }
     };
@@ -73,7 +67,7 @@ const Dashboard: React.FC = () => {
         localStorage.removeItem("user"); 
         navigate(PATH.HOME)
         window.location.reload()
-        message.success("Logout Successfully")
+        message.success("Đăng xuất thành công")
     }
     const menuItems = [
         {
@@ -135,7 +129,7 @@ const Dashboard: React.FC = () => {
                     <Outlet />
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                    ©2024 FPTeeth
+                    ©2025 Shoca
                 </Footer>
             </Layout>
         </Layout>
