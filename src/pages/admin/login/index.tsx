@@ -57,15 +57,15 @@ const AdminLoginPage = () => {
                                 autoComplete="off"
                             >
                                 <Form.Item<FieldType>
-                                    label="Email Address"
+                                    label="Địa chỉ email"
                                     name="email"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: 'Vui lòng nhập tên người dùng của bạn!' }]}
                                 >
                                     <Input type="email" placeholder="name@company.com" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                                 </Form.Item>
 
                                 <Form.Item<FieldType>
-                                    label="Password"
+                                    label="Mật khẩu"
                                     name="password"
                                     rules={[{ required: true, message: 'Please input your password!' }]}
                                 >
@@ -73,7 +73,7 @@ const AdminLoginPage = () => {
                                 </Form.Item>
 
                                 <Form.Item name="remember" valuePropName="checked">
-                                    <Checkbox>Keep me signed in</Checkbox>
+                                    <Checkbox>Giữ tôi đăng nhập</Checkbox>
                                 </Form.Item>
 
                                 <Form.Item>

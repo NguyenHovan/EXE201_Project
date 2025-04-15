@@ -65,7 +65,7 @@ const ModalCreateAccount = ({ isModalOpen, handleCancel, form, accountNeedToUpda
 
     return (
         <div>
-            <Modal width={800} title={accountNeedToUpdate ? "Update Account" : "Create Account"} footer={null} open={isModalOpen} onCancel={handleCancel}>
+            <Modal width={800} title={accountNeedToUpdate ? "Cập nhật tài khoản" : "Tạo tài khoản"} footer={null} open={isModalOpen} onCancel={handleCancel}>
                 <Form
                     className='my-10'
                     defaultValue={setValue}
@@ -75,35 +75,35 @@ const ModalCreateAccount = ({ isModalOpen, handleCancel, form, accountNeedToUpda
                     initialValues={{ gender: 0, role: 0 }}
                 >
                     <div className='grid grid-cols-2 gap-5'>
-                        <Form.Item label="First Name" name="firstName" rules={[{ required: true }]}>
+                        <Form.Item label="Tên" name="firstName" rules={[{ required: true }]}>
                             <Input placeholder="First Name" />
                         </Form.Item>
 
-                        <Form.Item label="Last Name" name="lastName" rules={[{ required: true }]}>
+                        <Form.Item label="Họ" name="lastName" rules={[{ required: true }]}>
                             <Input defaultValue={accountNeedToUpdate?.lastName} placeholder="Last Name" />
                         </Form.Item>
                     </div>
 
                     <div className='grid grid-cols-2 gap-5'>
-                        <Form.Item label="Gender" name="gender" rules={[{ required: true }]}>
+                        <Form.Item label="Giới tính" name="gender" rules={[{ required: true }]}>
                             <Select defaultValue={accountNeedToUpdate?.gender}>
-                                <Option value={0}>Male</Option>
-                                <Option value={1}>Female</Option>
-                                <Option value={2}>Other</Option>
+                                <Option value={0}>Nam</Option>
+                                <Option value={1}>Nữ</Option>
+                                <Option value={2}>Khác</Option>
                             </Select>
                         </Form.Item>
 
-                        <Form.Item label="Date of Birth" name="dateOfBirth" rules={[{ required: true }]}>
+                        <Form.Item label="Ngày sinh" name="dateOfBirth" rules={[{ required: true }]}>
                             <DatePicker defaultValue={defaultDate} className="w-full" />
                         </Form.Item>
                     </div>
 
                     <div className='grid grid-cols-2 gap-5'>
-                        <Form.Item label="Address" name="address" rules={[{ required: true }]}>
+                        <Form.Item label="Địa chỉ" name="address" rules={[{ required: true }]}>
                             <Input defaultValue={accountNeedToUpdate?.address} placeholder="Address" />
                         </Form.Item>
 
-                        <Form.Item label="Phone Number" name="phoneNumber" rules={[{ required: true }]}>
+                        <Form.Item label="Số điện thoại" name="phoneNumber" rules={[{ required: true }]}>
                             <Input defaultValue={accountNeedToUpdate?.phoneNumber} placeholder="Phone Number" />
                         </Form.Item>
                     </div>
@@ -119,22 +119,22 @@ const ModalCreateAccount = ({ isModalOpen, handleCancel, form, accountNeedToUpda
                         }
                         {
                             !accountNeedToUpdate && <Form.Item
-                                label="Password"
+                                label="Mật khẩu"
                                 name="password"
                                 rules={[
-                                    { required: true, message: 'Password is required.' },
-                                    { min: 6, message: 'Password must be at least 6 characters.' },
+                                    { required: true, message: 'Mật khẩu là bắt buộc.' },
+                                    { min: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự.' },
                                     {
                                         validator: (_, value) => {
                                             if (!value || (/[a-z]/.test(value) && /[A-Z]/.test(value))) {
                                                 return Promise.resolve();
                                             }
-                                            return Promise.reject(new Error('Password must contain at least one uppercase letter and one lowercase letter.'));
+                                            return Promise.reject(new Error('Mật khẩu phải chứa ít nhất một chữ cái viết hoa và một chữ cái viết thường.'));
                                         },
                                     },
                                 ]}
                             >
-                                <Input.Password placeholder="Password" />
+                                <Input.Password placeholder="Mật khẩu" />
                             </Form.Item>
                         }
                     </div>
@@ -146,24 +146,24 @@ const ModalCreateAccount = ({ isModalOpen, handleCancel, form, accountNeedToUpda
                             </Form.Item>
                         }
                         {
-                            !accountNeedToUpdate && <Form.Item label="Confirm Password" name="confirmPassword"
+                            !accountNeedToUpdate && <Form.Item label="Xác nhận mật khẩu" name="confirmPassword"
                                 rules={[
-                                    { required: true, message: 'Password is required.' },
-                                    { min: 6, message: 'Password must be at least 6 characters.' },
+                                    { required: true, message: 'Mật khẩu là bắt buộc.' },
+                                    { min: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự.' },
                                     {
                                         validator: (_, value) => {
                                             if (!value || (/[a-z]/.test(value) && /[A-Z]/.test(value))) {
                                                 return Promise.resolve();
                                             }
-                                            return Promise.reject(new Error('Password must contain at least one uppercase letter and one lowercase letter.'));
+                                            return Promise.reject(new Error('Mật khẩu phải chứa ít nhất một chữ cái viết hoa và một chữ cái viết thường.'));
                                         },
                                     },
                                 ]}>
-                                <Input.Password placeholder="Confirm Password" />
+                                <Input.Password placeholder="Xác nhận mật khẩu" />
                             </Form.Item>
                         }
 
-                        <Form.Item label="Role" name="role">
+                        <Form.Item label="Vai trò" name="role">
                             <Select>
                                 <Option value={0}>User </Option>
                                 <Option value={1}>Admin</Option>
@@ -172,7 +172,7 @@ const ModalCreateAccount = ({ isModalOpen, handleCancel, form, accountNeedToUpda
                     </div>
 
                     <Form.Item className='flex justify-center'>
-                        <Button type="primary" htmlType="submit" className="w-[200px] bg-purple-500">{accountNeedToUpdate ? "Update Account" : "Create Account"}</Button>
+                        <Button type="primary" htmlType="submit" className="w-[200px] bg-purple-500">{accountNeedToUpdate ? "Cập nhật tài khoản" : "Tạo tài khoản"}</Button>
                     </Form.Item>
                 </Form>
             </Modal>

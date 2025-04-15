@@ -85,10 +85,10 @@ const RegisterPage: React.FC = () => {
 
                                 {/* First Name and Last Name */}
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Form.Item label="First Name" name="firstName" >
+                                    <Form.Item label="Tên" name="firstName" >
                                         <Input className='w-[300px] float-right' value={formData.firstName} onChange={(e) => handleChange('firstName', e.target.value)} placeholder="John" />
                                     </Form.Item>
-                                    <Form.Item label="Last Name" name="lastName" >
+                                    <Form.Item label="Họ" name="lastName" >
                                         <Input className='w-[300px] float-right' value={formData.lastName} onChange={(e) => handleChange('lastName', e.target.value)} placeholder="Doe" />
                                     </Form.Item>
                                 </div>
@@ -96,7 +96,7 @@ const RegisterPage: React.FC = () => {
                                 {/* Gender and Date of Birth */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <Form.Item
-                                        label="Gender"
+                                        label="Giới tính"
                                         name="gender"
 
                                     >
@@ -112,7 +112,7 @@ const RegisterPage: React.FC = () => {
                                         </Select>
                                     </Form.Item>
                                     <Form.Item
-                                        label="Date of Birth"
+                                        label="Ngày sinh"
                                         name="dateOfBirth"
 
                                     // Đặt chiều rộng cho Form.Item
@@ -127,27 +127,27 @@ const RegisterPage: React.FC = () => {
 
                                 {/* Address and Phone Number */}
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Form.Item label="Address" name="address" >
+                                    <Form.Item label="Địa chỉ" name="address" >
                                         <Input className='w-[300px] float-right' value={formData.address} onChange={(e) => handleChange('address', e.target.value)} placeholder="123 Main St" />
                                     </Form.Item>
-                                    <Form.Item label="Phone Number" name="phoneNumber">
+                                    <Form.Item label="Số điện thoại" name="phoneNumber">
                                         <Input className='w-[300px] float-right' value={formData.phoneNumber} onChange={(e) => handleChange('phoneNumber', e.target.value)} placeholder="0918414764" />
                                     </Form.Item>
                                 </div>
 
                                 {/* Email and Password */}
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Form.Item label="Email Address" name="email" >
+                                    <Form.Item label="Địa chỉ email" name="email" >
                                         <Input className='w-[300px] float-right' value={formData.email} onChange={(e) => handleChange('email', e.target.value)} placeholder="name@company.com" />
                                     </Form.Item>
-                                    <Form.Item label="Confirm Password" name="confirmPassword" >
+                                    <Form.Item label="Xác nhận mật khẩu" name="confirmPassword" >
                                         <Input className='w-[300px] float-right' type="password" value={formData.confirmPassword} onChange={(e) => handleChange('confirmPassword', e.target.value)} placeholder="••••••••" />
                                     </Form.Item>
                                 </div>
 
                                 {/* Password and Role */}
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Form.Item label="Password" name="password" >
+                                    <Form.Item label="Mật khẩu" name="password" >
                                         <Input className='w-[300px] float-right' type="password" value={formData.password} onChange={(e) => handleChange('password', e.target.value)} placeholder="••••••••" />
                                     </Form.Item>
                                     {/* <Form.Item hidden label="Role" name="role" rules={[{ required: true, message: 'Role is required.' }]}>
