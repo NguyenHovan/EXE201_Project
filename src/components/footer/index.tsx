@@ -2,17 +2,17 @@ import React from 'react';
 
 const FooterComponent: React.FC = () => {
   return (
-    <footer className=" bg-purple-800 text-white pt-10 px-4">
+    <footer className="bg-purple-800 text-white pt-10 px-4">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-        {/* Exclusive */}
+        {/* Đặc biệt */}
         <div>
-          <h3 className="font-bold text-lg mb-4">Exclusive</h3>
-          <p className="mb-4">Subscribe</p>
-          <p className="text-sm mb-4">Get 10% off your first order</p>
+          <h3 className="font-bold text-lg mb-4">Đặc biệt</h3>
+          <p className="mb-4">Đăng ký</p>
+          <p className="text-sm mb-4">Nhận 10% giảm giá cho đơn hàng đầu tiên của bạn</p>
           <div className="flex items-center border border-white rounded-md p-2">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Nhập email của bạn"
               className="bg-transparent flex-grow text-sm px-2 outline-none"
             />
             <button className="text-white">
@@ -39,41 +39,41 @@ const FooterComponent: React.FC = () => {
           </div>
         </div>
 
-        {/* Support */}
+        {/* Hỗ trợ */}
         <div>
-          <h3 className="font-bold text-lg mb-4">Support</h3>
-          <p className="text-sm">111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
-          <p className="text-sm mt-2">exclusive@gmail.com</p>
+          <h3 className="font-bold text-lg mb-4">Hỗ trợ</h3>
+          <p className="text-sm">Lô E2a-7, Đường D1 Khu Công nghệ cao, P. Long Thạnh Mỹ, TP. Thủ Đức, TP. Hồ Chí Minh</p>
+          <p className="text-sm mt-2">shoca@gmail.com</p>
           <p className="text-sm mt-2">+88015-88888-9999</p>
         </div>
 
-        {/* Account */}
+        {/* Tài khoản */}
         <div>
-          <h3 className="font-bold text-lg mb-4">Account</h3>
+          <h3 className="font-bold text-lg mb-4">Tài khoản</h3>
           <ul className="space-y-2 text-sm">
-            <li>My Account</li>
-            <li>Login / Register</li>
-            <li>Cart</li>
-            <li>Wishlist</li>
-            <li>Shop</li>
+            <li>Tài khoản của tôi</li>
+            <li>Đăng nhập / Đăng ký</li>
+            <li>Giỏ hàng</li>
+            <li>Danh sách yêu thích</li>
+            <li>Mua sắm</li>
           </ul>
         </div>
 
-        {/* Quick Link */}
+        {/* Liên kết nhanh */}
         <div>
-          <h3 className="font-bold text-lg mb-4">Quick Link</h3>
+          <h3 className="font-bold text-lg mb-4">Liên kết nhanh</h3>
           <ul className="space-y-2 text-sm">
-            <li>Privacy Policy</li>
-            <li>Terms Of Use</li>
-            <li>FAQ</li>
-            <li>Contact</li>
+            <li>Chính sách bảo mật</li>
+            <li>Điều khoản sử dụng</li>
+            <li>Câu hỏi thường gặp</li>
+            <li>Liên hệ</li>
           </ul>
         </div>
 
-        {/* Download App */}
+        {/* Tải ứng dụng */}
         <div>
-          <h3 className="font-bold text-lg mb-4">Download App</h3>
-          <p className="text-sm mb-4">Save $3 with App New User Only</p>
+          <h3 className="font-bold text-lg mb-4">Tải ứng dụng</h3>
+          <p className="text-sm mb-4">Tiết kiệm $3 cho người dùng mới trên ứng dụng</p>
           <div className="flex space-x-4">
 
           </div>
@@ -93,9 +93,9 @@ const FooterComponent: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* Footer bottom */}
+      {/* Chân trang */}
       <div className="border-t border-purple-700 mt-10 pt-4 text-center">
-        <p className="text-sm text-purple-300">© 2024 Exclusive. All rights reserved.</p>
+        <p className="text-sm text-purple-300">© 2024 Exclusive. Bảo lưu mọi quyền.</p>
       </div>
     </footer>
   );
